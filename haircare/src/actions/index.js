@@ -8,7 +8,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const login = creds => dispatch => {
   dispatch ({ type: LOGIN_START });
   return axiosWithAuth()
-    .post('/login', creds)
+    .post('/users/login', creds)
     .then(res => {
       localStorage.setItem('token', res.data.payload)
       dispatch({ type: LOGIN_SUCCESS })
@@ -16,6 +16,23 @@ export const login = creds => dispatch => {
     })
     .catch(err => {
       dispatch({ type: LOGIN_FAILURE, payload: err })
+    })
+}
+
+//stylists actions & actionCreators
+export const FETCH_DATA_START = 'FETCH_DATA_START';
+export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
+export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
+
+export const getStylists = () => dispatch => {
+  dispatch({ type: FETCH_DATA_START })
+  axiosWithAuth()
+    .get('/stylists')
+    .then(res => {
+      console.log(res)
+      dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
+    }).catch(err =>{
+      dispatch({ type: FETCH_DATA_FAILURE, payload: err.response })
     })
 }
 
