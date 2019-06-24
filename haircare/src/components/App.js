@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import LoginForm from './components/LoginForm';
+import LoginForm from './LoginForm';
+import NewAccountForm from './NewAccountForm';
 import './App.css';
 
 function App() {
@@ -17,9 +18,12 @@ function App() {
             <li>
               <Link to="/login">Login</Link>
             </li>
+            <li>
+              <Link to="/newaccount">Sign Up</Link>
+            </li>
           </ul>
           <Route exact path="/login" component={LoginForm} />
-          {/* <Route path="/addnewpost" component={} /> */}
+          <Route path="/newaccount" component={NewAccountForm} />
         </div>
       </Router>
   );

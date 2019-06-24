@@ -1,20 +1,24 @@
 import {
   LOGIN_START,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  NEW_ACCOUNT_START,
+  NEW_ACCOUNT_SUCCESS,
+  NEW_ACCOUNT_FAILUTRE
 } from '../actions';
 
 
 const initialState = {
   loggingIn: false,
-  error: ''
+  error: '',
+  addingStylists: false
 }
 
 export const loginReducer = (state = initialState, action) => {
   switch(action.type) {
     case LOGIN_START:
       return {
-        ... state,
+        ...state,
         error: '',
         loggingIn: true
       }
@@ -29,6 +33,24 @@ export const loginReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
         loggingIn: false
+      }
+    case NEW_ACCOUNT_START:
+      return {
+        ...state,
+        error: '',
+        addingStylists: true
+      }
+    case NEW_ACCOUNT_SUCCESS:
+      return {
+        ...state,
+        error: '',
+        addingStylists: false
+      }
+    case NEW_ACCOUNT_FAILUTRE:
+      return {
+        ...state,
+        error: action.payload,
+        addingStylists: false
       }
     default:
       return state;

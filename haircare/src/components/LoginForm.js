@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
-import { login } from './actions';
+import { login } from '../actions';
 import { 
   MDBContainer, 
   MDBRow, 
@@ -50,9 +50,8 @@ class LoginForm extends React.Component {
                   <p className="h4 text-center py-4">Sign in to Your Account</p>
                   <div className="grey-text">
                     <MDBInput
-                      label="Username"
-                      icon="user"
                       group
+                      label="Username"
                       type="text"
                       validate
                       error="wrong"
@@ -63,7 +62,6 @@ class LoginForm extends React.Component {
                     />
                     <MDBInput
                       label="Password"
-                      icon="lock"
                       group
                       type="password"
                       validate
