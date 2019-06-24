@@ -1,0 +1,1 @@
+//render & style stylists data here from StylistList component

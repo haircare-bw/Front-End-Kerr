@@ -1,0 +1,1 @@
+//map over stylists here from api
