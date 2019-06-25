@@ -56,6 +56,21 @@ export const newAccount = newStylist => dispatch => {
     })
 }
 
+export const FETCH_PROFILE_START = 'FETCH_PROFILE_START';
+export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
+export const FETCH_PROFILE_FAILURE = 'FETCH_PROFILE_FAILURE';
+
+export const getProfiles = () => dispatch => {
+  dispatch({ type: FETCH_PROFILE_START })
+  axiosWithAuth()
+    .get('/profiles')
+    .then(res => {
+      console.log('profile', res.data)
+      dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data })
+    }).catch(err =>{
+      dispatch({ type: FETCH_PROFILE_FAILURE, payload: err.response })
+    })
+}
 
 // //NewPostForm actions & actionCreator
 // //post request

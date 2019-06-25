@@ -9,7 +9,6 @@ import Stylist from './Stylist';
 
 class App extends React.Component {
   render() {
-    console.log('props:', this.props)
     return (
           <div className="App">
             <ul>

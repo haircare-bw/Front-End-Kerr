@@ -36,11 +36,3 @@ export const stylistReducer = (state = initialState, action) => {
   }
 }
 
-// //post request
-// ADD_POST_START
-// ADD_POST_SUCCESS
-// ADD_POST_FAILURE
-
-
-
-// //Stretch Goal: update & delete posts
