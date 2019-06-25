@@ -5,7 +5,7 @@ import {
   FETCH_STYLIST_FAILURE
 } from '../actions';
 
-initialState = {
+const initialState = {
   stylists: [],
   error: '',
   fetchingStylists: false,

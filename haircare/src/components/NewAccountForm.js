@@ -16,11 +16,11 @@ import {
 class NewAccountForm extends React.Component {
   state = {
     stylists: {
-      name: '',
-      email: '',
+      username: '',
+      // email: '',
       password: '',
-      about: '',
-      image: '',
+      // about: '',
+      // image: '',
     }
   }
 
@@ -37,11 +37,11 @@ class NewAccountForm extends React.Component {
     e.preventDefault();
     this.props.newAccount(this.state.stylists)
     this.setState({
-      name: '',
-      email: '',
+      username: '',
+      // email: '',
       password: '',
-      about: '',
-      image: '',
+      // about: '',
+      // image: '',
     })
   }
 
@@ -66,7 +66,7 @@ class NewAccountForm extends React.Component {
                       value={this.state.username}
                       onChange={this.handleChange}
                     />
-                    <MDBInput
+                    {/* <MDBInput
                       label="Email"
                       group
                       type="email"
@@ -76,7 +76,7 @@ class NewAccountForm extends React.Component {
                       name="email"
                       value={this.state.email}
                       onChange={this.handleChange}
-                    />
+                    /> */}
                     <MDBInput
                       label="Password"
                       group
@@ -86,14 +86,14 @@ class NewAccountForm extends React.Component {
                       value={this.state.password}
                       onChange={this.handleChange}
                     />
-                    <MDBInput
+                    {/* <MDBInput
                       type="textarea"
                       label="Tell us about yourself"
                       rows="2"
                       name="about"
                       value={this.state.about}
                       onChange={this.handleChange}
-                    />
+                    /> */}
                     {/* <MDBFileInput 
                     label="Upload profile photo"
                     /> */}

@@ -3,8 +3,8 @@ import React from 'react';
 const StylistList = props => {
   return(
     <div>
-      {props.stylist.name}
-      {props.stylist.about}
+        <h1>{props.stylist.name}</h1>
+        <p>{props.stylist.about}</p>
     </div>
   )
 }
