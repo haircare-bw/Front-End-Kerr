@@ -4,7 +4,7 @@ import {
   LOGIN_FAILURE,
   NEW_ACCOUNT_START,
   NEW_ACCOUNT_SUCCESS,
-  NEW_ACCOUNT_FAILUTRE
+  NEW_ACCOUNT_FAILURE
 } from '../actions';
 
 
@@ -46,7 +46,7 @@ export const loginReducer = (state = initialState, action) => {
         error: '',
         addingStylists: false
       }
-    case NEW_ACCOUNT_FAILUTRE:
+    case NEW_ACCOUNT_FAILURE:
       return {
         ...state,
         error: action.payload,
