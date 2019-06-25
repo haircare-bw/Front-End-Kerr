@@ -10,7 +10,6 @@ export const login = creds => dispatch => {
   return axiosWithAuth()
     .post('/auth/login', creds)
     .then(res => {
-      console.log(res);
       localStorage.setItem('token', res.data.token)
       dispatch({ type: LOGIN_SUCCESS })
       return true;
@@ -19,6 +18,27 @@ export const login = creds => dispatch => {
       dispatch({ type: LOGIN_FAILURE, payload: err })
     })
 }
+
+//newAccount actions & actionCreator
+export const NEW_ACCOUNT_START = 'NEW_ACCOUNT_START';
+export const NEW_ACCOUNT_SUCCESS = 'NEW_ACCOUNT_SUCCESS';
+export const NEW_ACCOUNT_FAILURE = 'NEW_ACCOUNT_FAILURE'
+
+export const newAccount = newStylist => dispatch => {
+  dispatch ({ type: NEW_ACCOUNT_START })
+  return axiosWithAuth()
+    .post('/auth/register', newStylist)
+    .then(res => {
+      console.log ('resData:', res.data)
+      localStorage.setItem('token', res.data.token)
+      dispatch({ type: NEW_ACCOUNT_SUCCESS, payload: res.data })
+      return true;
+    })
+    .catch(err => {
+      dispatch({ type: NEW_ACCOUNT_FAILURE, payload: err })
+    })
+}
+
 
 //stylists actions & actionCreators
 export const FETCH_STYLIST_START = 'FETCH_STYLIST_START';
@@ -37,24 +57,6 @@ export const getStylists = () => dispatch => {
     })
 }
 
-//newAccount actions & actionCreator
-export const NEW_ACCOUNT_START = 'NEW_ACCOUNT_START';
-export const NEW_ACCOUNT_SUCCESS = 'NEW_ACCOUNT_SUCCESS';
-export const NEW_ACCOUNT_FAILURE = 'NEW_ACCOUNT_FAILURE'
-
-export const newAccount = newStylist => dispatch => {
-  dispatch ({ type: NEW_ACCOUNT_START })
-  axiosWithAuth()
-    .post('/auth/register', newStylist)
-    .then(res => {
-      console.log ('resData:', res.data)
-      localStorage.setItem('token', res.data.token)
-      dispatch({ type: NEW_ACCOUNT_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      dispatch({ type: NEW_ACCOUNT_FAILURE, payload: err })
-    })
-}
 
 export const FETCH_PROFILE_START = 'FETCH_PROFILE_START';
 export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';

@@ -5,6 +5,7 @@ import LoginForm from './LoginForm';
 import NewAccountForm from './NewAccountForm';
 import './App.css';
 import Stylist from './Stylist';
+import Profile from './Profile';
 // import PrivateRoute from './PrivateRoute';
 
 class App extends React.Component {
@@ -15,9 +16,9 @@ class App extends React.Component {
               <li>
                 <Link to="/protected">Stylists</Link>
               </li> 
-              {/* <li>
-                <Link to="/addnewpost">Create New Post</Link>
-              </li> */}
+              <li>
+                <Link to="/profile">Profile Page</Link>
+              </li>
               <li>
                 <Link to="/login">Login</Link>
               </li>
@@ -31,6 +32,7 @@ class App extends React.Component {
             <Route path="/login" component={LoginForm} />
             <Route path="/newaccount" component={NewAccountForm} />
             <Route exact path="/protected" component={Stylist} /> 
+            <Route exact path="/profile" component={Profile} />
           </div>
     );
   }

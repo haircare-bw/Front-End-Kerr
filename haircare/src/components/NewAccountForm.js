@@ -33,6 +33,11 @@ class NewAccountForm extends React.Component {
   addNewAccount = e => {
     e.preventDefault();
     this.props.newAccount(this.state.stylists)
+    .then(res => {
+      if(res) {
+        this.props.history.push('/profile')
+        }
+      })
     this.setState({
       username: '',
       password: '',
@@ -70,30 +75,30 @@ class NewAccountForm extends React.Component {
                       onChange={this.handleChange}
                     />
                     <p>Please choose one:</p>
-                    <div class="custom-control custom-radio custom-control-inline">
+                    <div className="custom-control custom-radio custom-control-inline">
                       <input 
                         type="radio" 
-                        class="custom-control-input" 
+                        className="custom-control-input" 
                         id="defaultInline1" 
                         name="inlineDefaultRadiosExample" 
                       />
                       <label 
-                        class="custom-control-label" 
-                        for="defaultInline1">
+                        className="custom-control-label" 
+                        htmlFor="defaultInline1">
                         Client
                       </label>
                     </div>
 
                     <div 
-                      class="custom-control custom-radio custom-control-inline">
+                      className="custom-control custom-radio custom-control-inline">
                       <input 
                         type="radio" 
-                        class="custom-control-input" 
+                        className="custom-control-input" 
                         id="defaultInline2" 
                         name="inlineDefaultRadiosExample" />
                       <label 
-                        class="custom-control-label" 
-                        for="defaultInline2">
+                        className="custom-control-label" 
+                        htmlFor="defaultInline2">
                         Stylist
                       </label>
                     </div>
