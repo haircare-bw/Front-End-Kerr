@@ -9,6 +9,6 @@ export const axiosWithAuth = () => {
     headers: {
       Authorization: token
     },
-    baseURL: 'https://hair-care.herokuapp.com'
+    baseURL: 'https://hair-care.herokuapp.com/api'
   });
 };

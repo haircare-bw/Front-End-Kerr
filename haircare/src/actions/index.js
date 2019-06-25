@@ -8,10 +8,10 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const login = creds => dispatch => {
   dispatch ({ type: LOGIN_START });
   return axiosWithAuth()
-    .post('/api/auth/login', creds)
+    .post('/auth/login', creds)
     .then(res => {
       console.log(res);
-      localStorage.setItem('token', res.data.payload)
+      localStorage.setItem('token', res.data.token)
       dispatch({ type: LOGIN_SUCCESS })
       return true;
     })
@@ -28,7 +28,7 @@ export const FETCH_STYLIST_FAILURE = 'FETCH_STYLIST_FAILURE';
 export const getStylists = () => dispatch => {
   dispatch({ type: FETCH_STYLIST_START })
   axiosWithAuth()
-    .get('/api/stylists')
+    .get('/stylists')
     .then(res => {
       console.log('stylists', res.data)
       dispatch({ type: FETCH_STYLIST_SUCCESS, payload: res.data })
@@ -45,7 +45,7 @@ export const NEW_ACCOUNT_FAILURE = 'NEW_ACCOUNT_FAILURE'
 export const newAccount = newStylist => dispatch => {
   dispatch ({ type: NEW_ACCOUNT_START })
   axiosWithAuth()
-    .post('/api/auth/register', newStylist)
+    .post('/auth/register', newStylist)
     .then(res => {
       console.log ('resData:', res.data)
       localStorage.setItem('token', res.data.token)

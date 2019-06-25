@@ -4,6 +4,7 @@ import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -21,7 +22,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
+    <Router>
     <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
