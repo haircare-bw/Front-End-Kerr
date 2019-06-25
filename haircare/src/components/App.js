@@ -6,6 +6,7 @@ import NewAccountForm from './NewAccountForm';
 import './App.css';
 import Stylist from './Stylist';
 import Profile from './Profile';
+import StylistPage from './StylistPage';
 // import PrivateRoute from './PrivateRoute';
 
 class App extends React.Component {
@@ -33,6 +34,7 @@ class App extends React.Component {
             <Route path="/newaccount" component={NewAccountForm} />
             <Route exact path="/protected" component={Stylist} /> 
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/stylistpage/:id" component={StylistPage} /> 
           </div>
     );
   }

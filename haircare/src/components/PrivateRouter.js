@@ -16,3 +16,5 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 export default PrivateRoute;
+
+//check if person logged in is a client or user and save on local storage - conditional rendering

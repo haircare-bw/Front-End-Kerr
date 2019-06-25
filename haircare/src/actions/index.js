@@ -74,6 +74,23 @@ export const getProfiles = () => dispatch => {
     })
 }
 
+export const GET_STYLIST_BY_ID_START = 'GET_STYLIST_BY_ID_START';
+export const GET_STYLIST_BY_ID_SUCCESS = 'GET_STYLIST_BY_ID_SUCCESS';
+export const GET_STYLIST_BY_ID_FAILURE = 'GET_STYLIST_BY_ID_FAILURE';
+
+export const getStylistId = id => dispatch => {
+  dispatch({ type: GET_STYLIST_BY_ID_START })
+  axiosWithAuth()
+    .get(`/stylists/${id}`)
+    .then(res => {
+      dispatch({ type: GET_STYLIST_BY_ID_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: GET_STYLIST_BY_ID_FAILURE, payload: err.response })
+    })
+}
+
+
 // //NewPostForm actions & actionCreator
 // //post request
 // ADD_POST_START

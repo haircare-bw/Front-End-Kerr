@@ -11,3 +11,5 @@
 //   skills: '',
 //   portfolio: ''
 // }
+
+//see trinkets api for code to addItem. addPost should be similar
