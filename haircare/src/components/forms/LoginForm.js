@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 // import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { login } from '../actions';
+import { login } from '../../actions';
 import { 
   MDBContainer, 
   MDBRow, 
@@ -72,9 +72,9 @@ class LoginForm extends React.Component {
                     />
                   </div>
                   <div className="text-center py-4 mt-3">
-                    <MDBBtn color="cyan" type="submit">
+                    <MDBBtn color="amber" type="submit">
                         {this.props.loggingIn ? (
-                          <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) 
+                          <Loader type="ThreeDots" color="#ffffff" height="12" width="26" />) 
                             : ('Login')}
                     </MDBBtn>
                   </div>

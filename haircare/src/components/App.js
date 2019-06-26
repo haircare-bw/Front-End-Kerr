@@ -1,14 +1,15 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import LoginForm from './LoginForm';
-import NewAccountForm from './NewAccountForm';
+import LoginForm from './forms/LoginForm';
+import NewAccountForm from './forms/NewAccountForm';
 import './App.css';
-import Stylist from './Stylist';
-import Profile from './Profile';
-import StylistPage from './StylistPage';
-import PrivateRouteClient from './PrivateRouteClient';
-import PrivateRouteStylist from './PrivateRouteStylist';
+import Stylist from './clientview/Stylist';
+import StylistPage from './clientview/StylistPage';
+import Profile from './stylistview/Profile';
+import PrivateRouteClient from './privateroute/PrivateRouteClient';
+import PrivateRouteStylist from './privateroute/PrivateRouteStylist';
+import { MDBBtn } from "mdbreact";
 
 class App extends React.Component {
   render() {
@@ -28,7 +29,7 @@ class App extends React.Component {
                 <Link to="/newaccount">Sign Up</Link>
               </li>
               <li>
-              <button onClick={this.logout}>logout</button>
+              <MDBBtn flat onClick={this.logout}>logout</MDBBtn>
               </li>
             </ul>
             <Route path="/login" component={LoginForm} />

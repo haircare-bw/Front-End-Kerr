@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
-import { newAccount } from '../actions';
+import { newAccount } from '../../actions';
 import { 
   MDBContainer, 
   MDBRow, 
@@ -106,7 +106,7 @@ class NewAccountForm extends React.Component {
                     </div>
                   </div>
                   <div className="text-center py-4 mt-3">
-                    <MDBBtn color="cyan" type="submit">
+                    <MDBBtn color="amber" type="submit">
                         {this.props.addingStylists ? (
                           <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) 
                             : ('Signup')}

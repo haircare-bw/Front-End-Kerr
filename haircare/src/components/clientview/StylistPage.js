@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { withRouter } from 'react-router-dom';
-import { getStylistId } from '../actions';
+import { getStylistId } from '../../actions';
 
 class StylistPage extends React.Component {
   componentDidMount() {

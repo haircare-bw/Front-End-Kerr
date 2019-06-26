@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { withRouter } from 'react-router-dom';
-import { getProfiles } from '../actions';
+import { getProfiles } from '../../actions';
 import ProfilePage from './ProfilePage';
 //map over profiles here from api
 
@@ -17,7 +17,7 @@ class Profile extends React.Component {
         
         <h2>Profile Page</h2>
         {this.props.fetchingProfile && ( 
-            <Loader type="Puff" color="#204963" height="60" width="60" />
+            <Loader type="Puff" color="#ffb900" height="60" width="60" />
         )}
 
         {this.props.profiles && (this.props.profiles.map(profile => (
