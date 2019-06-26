@@ -7,6 +7,7 @@ import './App.css';
 import Stylist from './clientview/Stylist';
 import StylistPage from './clientview/StylistPage';
 import Profile from './stylistview/Profile';
+import AddPostForm from './forms/AddPostForm';
 import PrivateRouteClient from './privateroute/PrivateRouteClient';
 import PrivateRouteStylist from './privateroute/PrivateRouteStylist';
 import { MDBBtn } from "mdbreact";
@@ -17,10 +18,13 @@ class App extends React.Component {
           <div className="App">
             <ul>
               <li>
-                <Link to="/protected">Stylists</Link>
+                <Link to="/stylists">Stylists</Link>
               </li> 
               <li>
                 <Link to="/profile">Profile Page</Link>
+              </li>
+              <li>
+                <Link to="/addnewpost">New Post Form</Link>
               </li>
               <li>
                 <Link to="/login">Login</Link>
@@ -34,9 +38,10 @@ class App extends React.Component {
             </ul>
             <Route path="/login" component={LoginForm} />
             <Route path="/newaccount" component={NewAccountForm} />
-            <PrivateRouteClient exact path="/protected" component={Stylist} /> 
+            <PrivateRouteClient exact path="/stylists" component={Stylist} />
+            <PrivateRouteClient exact path="/stylists/:id" component={StylistPage} />  
             <PrivateRouteStylist exact path="/profile" component={Profile} />
-            <PrivateRouteClient exact path="/stylists/:id" component={StylistPage} /> 
+            <PrivateRouteStylist exact path="/addnewpost" component={AddPostForm} />          
           </div>
     );
   }

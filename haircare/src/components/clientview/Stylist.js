@@ -15,7 +15,7 @@ class Stylist extends React.Component {
     return(
       <div>
         
-        <h1>Stylists that Care</h1>
+        <h1>Stylists Near You</h1>
         {this.props.fetchingStylists && ( 
             <Loader type="Puff" color="#ffb900" height="60" width="60" />
         )}

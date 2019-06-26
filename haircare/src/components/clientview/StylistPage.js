@@ -15,9 +15,9 @@ class StylistPage extends React.Component {
     return(
       <div>
         {this.props.fetchingStylists && ( 
-            <Loader type="Puff" color="#204963" height="60" width="60" />
+            <Loader type="Puff" color="#ffb900" height="60" width="60" />
         )}
-        <h1>IT works</h1>
+        <h1>COMPONENT WORKS!! =) NEED ID OF STYLIST</h1>
 {                    <div> 
                       <img
                         src={this.props.stylistPerson.profilePhoto}

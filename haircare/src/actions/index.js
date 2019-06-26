@@ -59,7 +59,7 @@ export const getStylists = () => dispatch => {
     })
 }
 
-
+//fetching profile data for stylist user to see on login/signup
 export const FETCH_PROFILE_START = 'FETCH_PROFILE_START';
 export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
 export const FETCH_PROFILE_FAILURE = 'FETCH_PROFILE_FAILURE';
@@ -76,6 +76,7 @@ export const getProfiles = () => dispatch => {
     })
 }
 
+//fetching stylist info by id for client user to see on btn click
 export const GET_STYLIST_BY_ID_START = 'GET_STYLIST_BY_ID_START';
 export const GET_STYLIST_BY_ID_SUCCESS = 'GET_STYLIST_BY_ID_SUCCESS';
 export const GET_STYLIST_BY_ID_FAILURE = 'GET_STYLIST_BY_ID_FAILURE';
@@ -95,6 +96,7 @@ export const getStylistId = id => dispatch => {
 
 // //NewPostForm actions & actionCreator
 // //post request
+//adding a new portfolio item to the profile page . . . . not a new person. How??
 export const ADD_POST_START = 'ADD_POST_START';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
@@ -104,6 +106,41 @@ export const addPost = newPost => dispatch => {
   axiosWithAuth()
     .post('/stylists', newPost)
     .then(res => {
+      dispatch({ type: ADD_POST_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: ADD_POST_FAILURE, payload: err.response })
+    })
+}
 
+export const DELETE_POST_START = 'DELETE_POST_START';
+export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
+export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
+
+export const deletePost = id => dispatch => {
+  dispatch({ type: DELETE_POST_START })
+  axiosWithAuth()
+    .delete(`/stylists${id}`)
+    .then(res => {
+      dispatch({ type: DELETE_POST_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_POST_FAILURE, payload: err.response })
+    })
+}
+
+export const UPDATE_PROFILE_START = 'UPDATE_PROFILE_START';
+export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
+export const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
+
+export const updateProfile = (id, updatedProfile) => dispatch => {
+  dispatch({ type: UPDATE_PROFILE_START })
+  axiosWithAuth()
+    .put(`/stylists/${id}`, updatedProfile)
+    .then(res => {
+      dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_PROFILE_FAILURE, payload: err.response })
     })
 }

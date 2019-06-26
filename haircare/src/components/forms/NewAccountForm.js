@@ -108,7 +108,7 @@ class NewAccountForm extends React.Component {
                   <div className="text-center py-4 mt-3">
                     <MDBBtn color="amber" type="submit">
                         {this.props.addingStylists ? (
-                          <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) 
+                          <Loader type="ThreeDots" color="#ffffff" height="12" width="26" />) 
                             : ('Signup')}
                     </MDBBtn>
                   </div>

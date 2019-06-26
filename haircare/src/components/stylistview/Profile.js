@@ -34,7 +34,8 @@ class Profile extends React.Component {
 const mapStateToProps = state => ({
   profiles: state.profileReducer.profiles,
   error: state.profileReducer.error,
-  fetchingProfile: state.profileReducer.fetchingProfile
+  fetchingProfile: state.profileReducer.fetchingProfile,
+  addingPost: state.profileReducer.addingPost
 })
 
 export default withRouter (
