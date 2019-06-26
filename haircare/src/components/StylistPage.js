@@ -7,6 +7,7 @@ import { getStylistId } from '../actions';
 class StylistPage extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id;
+    console.log('COMPONENT!!', id)
     this.props.getStylistId(id);
   }
 
@@ -16,20 +17,17 @@ class StylistPage extends React.Component {
         {this.props.fetchingStylists && ( 
             <Loader type="Puff" color="#204963" height="60" width="60" />
         )}
-
-        {this.props.stylistPerson && (this.props.stylistPerson.map(person => (
-                    <div 
-                      key={person.id} 
-                    >
+        <h1>IT works</h1>
+{                    <div> 
                       <img
-                        src={person.profilePhoto}
-                        alt={person.name}
+                        src={this.props.stylistPerson.profilePhoto}
+                        alt={this.props.stylistPerson.name}
                       />
-                      <p> {person.username } </p>
-                      <p> {person.about} </p>
-                      <p> {person.skills} </p>
+                      <p> {this.props.stylistPerson.username } </p>
+                      <p> {this.props.stylistPerson.about} </p>
+                      <p> {this.props.stylistPerson.skills} </p>
                   </div>
-                )))}
+                }
       </div>
     )
   }

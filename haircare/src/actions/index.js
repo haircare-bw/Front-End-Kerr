@@ -83,7 +83,7 @@ export const GET_STYLIST_BY_ID_FAILURE = 'GET_STYLIST_BY_ID_FAILURE';
 export const getStylistId = id => dispatch => {
   dispatch({ type: GET_STYLIST_BY_ID_START })
   axiosWithAuth()
-    .get(`/stylists/:${id}`)
+    .get(`/stylists/${id}`)
     .then(res => {
       dispatch({ type: GET_STYLIST_BY_ID_SUCCESS, payload: res.data })
     })
@@ -95,6 +95,15 @@ export const getStylistId = id => dispatch => {
 
 // //NewPostForm actions & actionCreator
 // //post request
-// ADD_POST_START
-// ADD_POST_SUCCESS
-// ADD_POST_FAILURE
+export const ADD_POST_START = 'ADD_POST_START';
+export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
+export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
+
+export const addPost = newPost => dispatch => {
+  dispatch({ type: ADD_POST_START })
+  axiosWithAuth()
+    .post('/stylists', newPost)
+    .then(res => {
+
+    })
+}

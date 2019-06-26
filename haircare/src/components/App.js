@@ -35,7 +35,7 @@ class App extends React.Component {
             <Route path="/newaccount" component={NewAccountForm} />
             <PrivateRouteClient exact path="/protected" component={Stylist} /> 
             <PrivateRouteStylist exact path="/profile" component={Profile} />
-            <PrivateRouteClient exact path="/stylist" component={StylistPage} /> 
+            <PrivateRouteClient exact path="/stylists/:id" component={StylistPage} /> 
           </div>
     );
   }

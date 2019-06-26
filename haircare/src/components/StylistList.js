@@ -3,8 +3,11 @@ import { withRouter } from 'react-router';
 
 class StylistList extends React.Component {
   
+  //remove testId and pass in actual id from api with no colon!!!
   pushToStylistPage = (id) => {
-      this.props.history.push(`/stylists/:${id}`)
+    let TestId=1
+    console.log(id)
+      this.props.history.push(`/stylists/${TestId}`)
     }
 
   render() {
