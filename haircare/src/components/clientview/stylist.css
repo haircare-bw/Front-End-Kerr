@@ -1,0 +1,11 @@
+.portfolio-container {
+  display: flex;
+  flex-direction: row;
+  height: 40vmin;
+  margin: 50px auto;
+}
+
+.portfolio-img {
+  width: 400px;
+  margin: 10px 80px;
+}

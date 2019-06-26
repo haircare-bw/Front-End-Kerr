@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { withRouter } from 'react-router-dom';
 import { getStylistId } from '../../actions';
+import LightBox from './LightBox';
+import './stylist.css';
 
 class StylistPage extends React.Component {
   componentDidMount() {
@@ -17,17 +19,19 @@ class StylistPage extends React.Component {
         {this.props.fetchingStylists && ( 
             <Loader type="Puff" color="#ffb900" height="60" width="60" />
         )}
-        <h1>COMPONENT WORKS!! =) NEED ID OF STYLIST</h1>
-{                    <div> 
+        <h1><span>{this.props.stylistPerson.username}'s</span> P O R T F O L I O </h1>
+        
+                  { <div className="portfolio-container"> 
                       <img
-                        src={this.props.stylistPerson.profilePhoto}
+                        // src={this.props.stylistPerson.profilePhoto}
+                        src='https://source.unsplash.com/collection/391411'
                         alt={this.props.stylistPerson.name}
+                        className="portfolio-img"
                       />
-                      <p> {this.props.stylistPerson.username } </p>
-                      <p> {this.props.stylistPerson.about} </p>
-                      <p> {this.props.stylistPerson.skills} </p>
-                  </div>
-                }
+                      <p> {this.props.stylistPerson.about} </p> <br />
+                      <span> {this.props.stylistPerson.skills} </span>
+                  </div> }
+                <LightBox />
       </div>
     )
   }
