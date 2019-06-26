@@ -2,13 +2,17 @@
 import {
   FETCH_STYLIST_START,
   FETCH_STYLIST_SUCCESS,
-  FETCH_STYLIST_FAILURE
+  FETCH_STYLIST_FAILURE,
+  GET_STYLIST_BY_ID_START,
+  GET_STYLIST_BY_ID_SUCCESS,
+  GET_STYLIST_BY_ID_FAILURE
 } from '../actions';
 
 const initialState = {
   stylists: [],
   error: '',
   fetchingStylists: false,
+  stylistPerson: {}
 }
 
 export const stylistReducer = (state = initialState, action) => {
@@ -31,16 +35,27 @@ export const stylistReducer = (state = initialState, action) => {
         error: action.payload,
         fetchingStylists: false
       }
+    case GET_STYLIST_BY_ID_START:
+      return {
+        ...state,
+        error: '',
+        fetchingStylists: true
+      }
+    case GET_STYLIST_BY_ID_SUCCESS:
+      return {
+      ...state,
+      error: '',
+      stylistPerson: action.payload,
+      fetchingStylists: false
+      }
+    case GET_STYLIST_BY_ID_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        fetchingStylists: true
+      }
     default:
       return state;
   }
 }
 
-// //post request
-// ADD_POST_START
-// ADD_POST_SUCCESS
-// ADD_POST_FAILURE
-
-
-
-// //Stretch Goal: update & delete posts

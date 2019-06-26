@@ -17,10 +17,7 @@ class NewAccountForm extends React.Component {
   state = {
     stylists: {
       username: '',
-      // email: '',
       password: '',
-      // about: '',
-      // image: '',
     }
   }
 
@@ -36,12 +33,14 @@ class NewAccountForm extends React.Component {
   addNewAccount = e => {
     e.preventDefault();
     this.props.newAccount(this.state.stylists)
+    .then(res => {
+      if(res) {
+        this.props.history.push('/profile')
+        }
+      })
     this.setState({
       username: '',
-      // email: '',
       password: '',
-      // about: '',
-      // image: '',
     })
   }
 
@@ -66,17 +65,6 @@ class NewAccountForm extends React.Component {
                       value={this.state.username}
                       onChange={this.handleChange}
                     />
-                    {/* <MDBInput
-                      label="Email"
-                      group
-                      type="email"
-                      validate
-                      error="wrong"
-                      success="right"
-                      name="email"
-                      value={this.state.email}
-                      onChange={this.handleChange}
-                    /> */}
                     <MDBInput
                       label="Password"
                       group
@@ -86,17 +74,36 @@ class NewAccountForm extends React.Component {
                       value={this.state.password}
                       onChange={this.handleChange}
                     />
-                    {/* <MDBInput
-                      type="textarea"
-                      label="Tell us about yourself"
-                      rows="2"
-                      name="about"
-                      value={this.state.about}
-                      onChange={this.handleChange}
-                    /> */}
-                    {/* <MDBFileInput 
-                    label="Upload profile photo"
-                    /> */}
+                    <p>Please choose one:</p>
+                    <div className="custom-control custom-radio custom-control-inline">
+                      <input 
+                        type="radio" 
+                        className="custom-control-input" 
+                        id="defaultInline1" 
+                        name="inlineDefaultRadiosExample"
+                        // value={} 
+                      />
+                      <label 
+                        className="custom-control-label" 
+                        htmlFor="defaultInline1">
+                        Client
+                      </label>
+                    </div>
+                    <div 
+                      className="custom-control custom-radio custom-control-inline">
+                      <input 
+                        type="radio" 
+                        className="custom-control-input" 
+                        id="defaultInline2" 
+                        name="inlineDefaultRadiosExample"
+                        // value={} 
+                      />
+                      <label 
+                        className="custom-control-label" 
+                        htmlFor="defaultInline2">
+                        Stylist
+                      </label>
+                    </div>
                   </div>
                   <div className="text-center py-4 mt-3">
                     <MDBBtn color="cyan" type="submit">

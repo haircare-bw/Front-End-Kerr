@@ -34,7 +34,8 @@ class Stylist extends React.Component {
 const mapStateToProps = state => ({
   stylists: state.stylistReducer.stylists,
   error: state.stylistReducer.error,
-  fetchingStylists: state.stylistReducer.fetchingStylists
+  fetchingStylists: state.stylistReducer.fetchingStylists,
+  // stylistPerson: state.stylistReducer.stylistPerson
 })
 
 export default withRouter (

@@ -5,20 +5,22 @@ import LoginForm from './LoginForm';
 import NewAccountForm from './NewAccountForm';
 import './App.css';
 import Stylist from './Stylist';
-// import PrivateRoute from './PrivateRoute';
+import Profile from './Profile';
+import StylistPage from './StylistPage';
+import PrivateRouteClient from './PrivateRouteClient';
+import PrivateRouteStylist from './PrivateRouteStylist';
 
 class App extends React.Component {
   render() {
-    console.log('props:', this.props)
     return (
           <div className="App">
             <ul>
               <li>
                 <Link to="/protected">Stylists</Link>
               </li> 
-              {/* <li>
-                <Link to="/addnewpost">Create New Post</Link>
-              </li> */}
+              <li>
+                <Link to="/profile">Profile Page</Link>
+              </li>
               <li>
                 <Link to="/login">Login</Link>
               </li>
@@ -31,7 +33,9 @@ class App extends React.Component {
             </ul>
             <Route path="/login" component={LoginForm} />
             <Route path="/newaccount" component={NewAccountForm} />
-            <Route exact path="/protected" component={Stylist} /> 
+            <PrivateRouteClient exact path="/protected" component={Stylist} /> 
+            <PrivateRouteStylist exact path="/profile" component={Profile} />
+            <PrivateRouteClient exact path="/stylists/:id" component={StylistPage} /> 
           </div>
     );
   }
