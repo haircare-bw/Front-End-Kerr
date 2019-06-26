@@ -1,17 +1,26 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
-const StylistList = props => {
-  return(
-    <div>
-        <h3>{props.stylist.username}</h3>
-        <p>{props.stylist.about}</p>
-        <p>Skills: {props.stylist.skills}</p>
-        <button onClick={props.pushToStylistPage(props.stylist.id)}>View Profile</button>
-    </div>
-  )
+class StylistList extends React.Component {
+  
+  pushToStylistPage = (id) => {
+      this.props.history.push(`/stylists/:${id}`)
+    }
+
+  render() {
+    console.log(this.props);
+    return(
+      <div>
+          <h3>{this.props.stylist.username}</h3>
+          <p>{this.props.stylist.about}</p>
+          <p>Skills: {this.props.stylist.skills}</p>
+          <button onClick={this.pushToStylistPage}>View Profile</button>
+      </div>
+    )
+  }
 }
 
-export default StylistList;
+export default withRouter (StylistList);
 
 //render & style stylists data here from Style component
 //use Card decks from MDB to style

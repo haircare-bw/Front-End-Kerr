@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRouteClient = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -15,6 +15,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+export default PrivateRouteClient;
 
-//check if person logged in is a client or user and save on local storage - conditional rendering
+//stretch if else statement to reroute client back to page
+// if userType !client return not authorized
+
+//(localStorage.getItem('token') && localStorage.getItem('userType') === 'client')

@@ -13,9 +13,23 @@ class StylistPage extends React.Component {
   render() {
     return(
       <div>
-          <h3>{props.stylistPerson.username}</h3>
-          <p>{props.stylistPerson.about}</p>
-          <p>Skills: {props.stylistPerson.skills}</p>
+        {this.props.fetchingStylists && ( 
+            <Loader type="Puff" color="#204963" height="60" width="60" />
+        )}
+
+        {this.props.stylistPerson && (this.props.stylistPerson.map(person => (
+                    <div 
+                      key={person.id} 
+                    >
+                      <img
+                        src={person.profilePhoto}
+                        alt={person.name}
+                      />
+                      <p> {person.username } </p>
+                      <p> {person.about} </p>
+                      <p> {person.skills} </p>
+                  </div>
+                )))}
       </div>
     )
   }
@@ -23,7 +37,8 @@ class StylistPage extends React.Component {
 
 
 const mapStateToProps = state => ({
-  stylistPerson: state.stylistReducer.stylistPerson
+  stylistPerson: state.stylistReducer.stylistPerson,
+  fetchingStylists: state.stylistReducer.fetchingStylists
 })
 
 export default withRouter (

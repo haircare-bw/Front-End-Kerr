@@ -11,10 +11,6 @@ class Stylist extends React.Component {
     this.props.getStylists();
   }
 
-  pushToStylistPage = (id) => {
-    this.props.history.push(`/stylistpage/${id}`)
-  }
-
   render() {
     return(
       <div>
@@ -25,7 +21,7 @@ class Stylist extends React.Component {
         )}
 
         {this.props.stylists && (this.props.stylists.map(stylist => (
-            <StylistList stylist={stylist} key={stylist.id} pushToStylistPage={this.pushToStylistPage} />
+            <StylistList stylist={stylist} key={stylist.id} />
         )))}
 
         {this.props.error && <p>{this.props.error}</p>} 
@@ -39,7 +35,7 @@ const mapStateToProps = state => ({
   stylists: state.stylistReducer.stylists,
   error: state.stylistReducer.error,
   fetchingStylists: state.stylistReducer.fetchingStylists,
-  stylistPerson: state.stylistReducer.stylistPerson
+  // stylistPerson: state.stylistReducer.stylistPerson
 })
 
 export default withRouter (

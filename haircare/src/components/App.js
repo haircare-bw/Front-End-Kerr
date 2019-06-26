@@ -7,7 +7,8 @@ import './App.css';
 import Stylist from './Stylist';
 import Profile from './Profile';
 import StylistPage from './StylistPage';
-// import PrivateRoute from './PrivateRoute';
+import PrivateRouteClient from './PrivateRouteClient';
+import PrivateRouteStylist from './PrivateRouteStylist';
 
 class App extends React.Component {
   render() {
@@ -32,9 +33,9 @@ class App extends React.Component {
             </ul>
             <Route path="/login" component={LoginForm} />
             <Route path="/newaccount" component={NewAccountForm} />
-            <Route exact path="/protected" component={Stylist} /> 
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/stylistpage/:id" component={StylistPage} /> 
+            <PrivateRouteClient exact path="/protected" component={Stylist} /> 
+            <PrivateRouteStylist exact path="/profile" component={Profile} />
+            <PrivateRouteClient exact path="/stylist" component={StylistPage} /> 
           </div>
     );
   }

@@ -80,7 +80,8 @@ class NewAccountForm extends React.Component {
                         type="radio" 
                         className="custom-control-input" 
                         id="defaultInline1" 
-                        name="inlineDefaultRadiosExample" 
+                        name="inlineDefaultRadiosExample"
+                        // value={} 
                       />
                       <label 
                         className="custom-control-label" 
@@ -88,14 +89,15 @@ class NewAccountForm extends React.Component {
                         Client
                       </label>
                     </div>
-
                     <div 
                       className="custom-control custom-radio custom-control-inline">
                       <input 
                         type="radio" 
                         className="custom-control-input" 
                         id="defaultInline2" 
-                        name="inlineDefaultRadiosExample" />
+                        name="inlineDefaultRadiosExample"
+                        // value={} 
+                      />
                       <label 
                         className="custom-control-label" 
                         htmlFor="defaultInline2">

@@ -10,6 +10,7 @@ export const login = creds => dispatch => {
   return axiosWithAuth()
     .post('/auth/login', creds)
     .then(res => {
+      console.log('response', res.data)
       localStorage.setItem('token', res.data.token)
       dispatch({ type: LOGIN_SUCCESS })
       return true;
@@ -30,6 +31,7 @@ export const newAccount = newStylist => dispatch => {
     .post('/auth/register', newStylist)
     .then(res => {
       console.log ('resData:', res.data)
+      // localStorage.setItem('userType', res.data.type)
       localStorage.setItem('token', res.data.token)
       dispatch({ type: NEW_ACCOUNT_SUCCESS, payload: res.data })
       return true;
@@ -48,9 +50,9 @@ export const FETCH_STYLIST_FAILURE = 'FETCH_STYLIST_FAILURE';
 export const getStylists = () => dispatch => {
   dispatch({ type: FETCH_STYLIST_START })
   axiosWithAuth()
-    .get('/stylists')
+    .get('/users')
     .then(res => {
-      console.log('stylists', res.data)
+      console.log('users', res.data)
       dispatch({ type: FETCH_STYLIST_SUCCESS, payload: res.data })
     }).catch(err =>{
       dispatch({ type: FETCH_STYLIST_FAILURE, payload: err.response })
@@ -65,7 +67,7 @@ export const FETCH_PROFILE_FAILURE = 'FETCH_PROFILE_FAILURE';
 export const getProfiles = () => dispatch => {
   dispatch({ type: FETCH_PROFILE_START })
   axiosWithAuth()
-    .get('/profiles')
+    .get('/stylists')
     .then(res => {
       console.log('profile', res.data)
       dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data })
@@ -81,7 +83,7 @@ export const GET_STYLIST_BY_ID_FAILURE = 'GET_STYLIST_BY_ID_FAILURE';
 export const getStylistId = id => dispatch => {
   dispatch({ type: GET_STYLIST_BY_ID_START })
   axiosWithAuth()
-    .get(`/stylists/${id}`)
+    .get(`/stylists/:${id}`)
     .then(res => {
       dispatch({ type: GET_STYLIST_BY_ID_SUCCESS, payload: res.data })
     })
