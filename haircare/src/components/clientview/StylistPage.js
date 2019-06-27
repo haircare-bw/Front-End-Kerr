@@ -9,7 +9,7 @@ import './stylist.css';
 class StylistPage extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log('COMPONENT!!', id)
+    // console.log('COMPONENT!!', id)
     this.props.getStylistId(id);
   }
 
@@ -23,16 +23,16 @@ class StylistPage extends React.Component {
         
                   { <div className="portfolio-container"> 
                       <img
-                        // src={this.props.stylistPerson.profilePhoto}
-                        src={this.props.stylistPerson.profile_img}
+                        src='https://source.unsplash.com/collection/391411'
+                        // src={this.props.stylistPerson.profile_img}
                         alt={this.props.stylistPerson.name}
                         className="portfolio-img"
                       />
                       <p> {this.props.stylistPerson.about} </p> <br />
                       <span> {this.props.stylistPerson.skills} </span>
                   </div> }
-                  {this.props.stylistPerson.portfolio_img}
-                {/* <LightBox /> */}
+                  {/* {this.props.stylistPerson.portfolio_img} */}
+                <LightBox />
       </div>
     )
   }

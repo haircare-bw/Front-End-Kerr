@@ -52,7 +52,7 @@ export const getStylists = () => dispatch => {
   axiosWithAuth()
     .get('/users')
     .then(res => {
-      console.log('users', res.data)
+      console.log('FETCH action users', res.data)
       dispatch({ type: FETCH_STYLIST_SUCCESS, payload: res.data })
     }).catch(err =>{
       dispatch({ type: FETCH_STYLIST_FAILURE, payload: err.response })
