@@ -6,10 +6,10 @@ import LoginForm from './forms/LoginForm';
 import NewAccountForm from './forms/NewAccountForm';
 import Stylist from './clientview/Stylist';
 import StylistPage from './clientview/StylistPage';
-import Profile from './stylistview/Profile';
+import ProfilePage from './stylistview/ProfilePage';
 import AddPostForm from './forms/AddPostForm';
-// import PrivateRouteClient from './privateroute/PrivateRouteClient';
-// import PrivateRouteStylist from './privateroute/PrivateRouteStylist';
+import PrivateRouteClient from './privateroute/PrivateRouteClient';
+import PrivateRouteStylist from './privateroute/PrivateRouteStylist';
 import { MDBBtn } from "mdbreact";
 
 class Navigation extends React.Component {
@@ -36,16 +36,16 @@ class Navigation extends React.Component {
                 <Link to="/newaccount">Sign Up</Link>
               </li>
               <li>
-              <MDBBtn flat onClick={this.logout}>logout</MDBBtn>
+                <MDBBtn flat onClick={this.logout}>logout</MDBBtn>
               </li>
             </ul>
             <Route exact path="/" component={Home} />
             <Route path="/login" component={LoginForm} />
             <Route path="/newaccount" component={NewAccountForm} />
-            <Route exact path="/stylists" component={Stylist} />
-            <Route exact path="/stylistpage/:id" component={StylistPage} />  
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/addnewpost" component={AddPostForm} />          
+            <PrivateRouteClient exact path="/stylists" component={Stylist} />
+            <PrivateRouteClient exact path="/stylistpage/:id" component={StylistPage} />  
+            <PrivateRouteStylist exact path="/profile" component={ProfilePage} />
+            <PrivateRouteStylist exact path="/addnewpost" component={AddPostForm} />          
           </div>
     );
   }
