@@ -45,7 +45,7 @@ class AddPostForm extends React.Component {
     e.preventDefault();
     
     const fd = new FormData();
-    fd.append('image', this.state.fileSelected, this.state.fileSelected.name)
+    fd.append('image', this.state.fileSelected)
     
     axios
       .post('/endpointFromBackEndApi', fd)
