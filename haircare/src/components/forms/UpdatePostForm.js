@@ -1,10 +1,10 @@
 //delete btn here with the deletePost();
 import React from 'react';
 import { updateProfile, deletePost } from '../../actions';
-import Loader from 'react-loader-spinner';
+// import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 
-class UpdateProfileForm extends React.Component {
+class UpdatePostForm extends React.Component {
   state ={
     profiles: this.props.profiles
   }
@@ -58,10 +58,10 @@ const mapStateToProps = state => ({
   error: state.profileReducer.error,
   updatingProfile: state.profileReducer.updatingProfile,
   deletingPost: state.profileReducer.deletingPost,
-  activePost
+  // activePost
 });
 
 export default connect(
   mapStateToProps, 
   { updateProfile, deletePost }
-  )(UpdateProfileForm);
+  )(UpdatePostForm);

@@ -15,7 +15,7 @@ class ProfilePage extends React.Component {
   };
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const id = localStorage.getItem('userId');
     // console.log('COMPONENT!!', id)
     this.props.getStylistId(id);
   }
@@ -56,9 +56,9 @@ class ProfilePage extends React.Component {
       .catch(err => console.log(err));
   };
 
-  // pushToUpdateForm = () => {
-  //   this.props.history.push("/");
-  // };
+  pushToUpdateForm = () => {
+    this.props.history.push("/update-form");
+  };
 
   render() {
     return (
@@ -83,7 +83,7 @@ class ProfilePage extends React.Component {
           </div>
         }
         {this.props.stylistPerson.stylist.posts}
-        <MDBBtn color="amber" onClick={this.upd}>
+        <MDBBtn color="amber" onClick={() => this.pushToUpdateForm()}>
           UPDATE
         </MDBBtn>
         {/* <LightBox /> */}
