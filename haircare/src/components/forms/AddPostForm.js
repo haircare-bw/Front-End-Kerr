@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions';
-import axios from 'axios';
+
 import { 
   MDBContainer, 
   MDBRow, 
