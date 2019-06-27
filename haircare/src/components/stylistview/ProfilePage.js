@@ -15,7 +15,7 @@ class ProfilePage extends React.Component {
   };
 
   componentDidMount() {
-    const id = localStorage.getItem('userId');
+    const id = localStorage.getItem("userId");
     // console.log('COMPONENT!!', id)
     this.props.getStylistId(id);
   }
@@ -61,32 +61,47 @@ class ProfilePage extends React.Component {
   };
 
   render() {
+    const { stylist } = this.props.stylistPerson;
+
+    console.log("STYLIST PAGE PROPS: ", stylist);
     return (
       <div>
-        {this.props.fetchingStylists && (
+        {stylist === undefined ? (
           <Loader type="Puff" color="#ffb900" height="60" width="60" />
-        )}
-        <h1>
-          <span>{this.props.stylistPerson.stylist.username}'s</span> P O R T F O
-          L I O{" "}
-        </h1>
+        ) : (
+          <div>
+            <h1>
+              <span>{this.props.stylistPerson.stylist.username}'s</span> P O R T
+              F O L I O{" "}
+            </h1>
 
-        {
-          <div className="portfolio-container">
-            <img
-              // src='https://source.unsplash.com/collection/391411'
-              src={this.props.stylistPerson.stylist.profile_img}
-              alt={this.props.stylistPerson.stylist.username}
-              className="portfolio-img"
-            />
-            <span> {this.props.stylistPerson.stylist.skills} </span>
+            <div className="portfolio-container">
+              <img
+                // src='https://source.unsplash.com/collection/391411'
+                src={this.props.stylistPerson.stylist.profile_img}
+                alt={this.props.stylistPerson.stylist.username}
+                className="portfolio-img"
+              />
+              <span> {this.props.stylistPerson.stylist.skills} </span>
+            </div>
+
+            {stylist.posts.map(post => {
+              return (
+                <div key={post.id}>
+                  <h2>{post.title}</h2>
+                  <img src={post.posts_image} />
+                  <p>{post.description}</p>
+                  <button onClick={() => {}}>Update</button>
+                  <button onClick={() => {}}>Delete</button>
+                </div>
+              );
+            })}
+
+            {/* <MDBBtn color="amber" onClick={() => this.pushToUpdateForm()}>
+              UPDATE
+            </MDBBtn> */}
           </div>
-        }
-        {this.props.stylistPerson.stylist.posts}
-        <MDBBtn color="amber" onClick={() => this.pushToUpdateForm()}>
-          UPDATE
-        </MDBBtn>
-        {/* <LightBox /> */}
+        )}
       </div>
     );
   }
@@ -105,3 +120,8 @@ export default withRouter(
 );
 
 //https://source.unsplash.com/collection/391411
+
+/* this.props.fetchingStylists ?
+        <Loader type="Puff" color="#ffb900" height="60" width="60" />
+
+        */
