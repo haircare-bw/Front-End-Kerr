@@ -20,14 +20,8 @@ class ProfilePage extends React.Component {
     this.props.getStylistId(id);
   }
 
-  addNewPost = post => {
-    axios
-      .post("/users", post)
-      .then(res => {
-        this.setState({ posts: res.data });
-        this.props.history.push(`/profile`);
-      })
-      .catch(err => console.log(err));
+  pushToAddPostForm = () => {
+    this.props.history.push("/addnewpost");
   };
 
   setUpdateForm = (e, post) => {
@@ -66,6 +60,7 @@ class ProfilePage extends React.Component {
     console.log("STYLIST PAGE PROPS: ", stylist);
     return (
       <div>
+        <button onClick={() => this.pushToAddPostForm()}>Add New Post</button>
         {stylist === undefined ? (
           <Loader type="Puff" color="#ffb900" height="60" width="60" />
         ) : (
