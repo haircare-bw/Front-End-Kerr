@@ -20,7 +20,7 @@ class UpdateProfileForm extends React.Component {
     }))
   }
 
-
+//function to delete post
   handleDelete = e => {
     e.preventDefault();
     this.props.deletePost(this.state.profile.post)
@@ -28,11 +28,11 @@ class UpdateProfileForm extends React.Component {
   }
 
   //function to pass into 'UPDATE PROFILE' FORM which will update profile with info entered then route back to page
-  handleProfileUpdate = e => {
-    e.preventDefault();
-    this.props.updateProfile(this.state.profile)
-    this.props.history.push('/users')
-  }
+  // handleProfileUpdate = e => {
+  //   e.preventDefault();
+  //   this.props.updateProfile(this.state.profile)
+  //   this.props.history.push('/users')
+  // }
 
   render() {
     console.log('PROPS IN UPDATE FORM: ', this.props)
@@ -57,7 +57,8 @@ class UpdateProfileForm extends React.Component {
 const mapStateToProps = state => ({
   error: state.profileReducer.error,
   updatingProfile: state.profileReducer.updatingProfile,
-  deletingPost: state.profileReducer.deletingPost
+  deletingPost: state.profileReducer.deletingPost,
+  activePost
 });
 
 export default connect(

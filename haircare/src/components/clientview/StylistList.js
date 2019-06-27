@@ -11,9 +11,9 @@ class StylistList extends React.Component {
   
   //remove testId and pass in actual id from api with no colon!!!
   pushToStylistPage = (id) => {
-    let TestId = 2
+    // let TestId = 2
     // console.log(id)
-      this.props.history.push(`/stylistpage/${TestId}`)
+      this.props.history.push(`/stylistpage/${id}`)
     }
 
     //thumbs up toggle
@@ -49,7 +49,7 @@ class StylistList extends React.Component {
               <MDBCardTitle>{this.props.stylist.username}</MDBCardTitle>
               <MDBCardText>{this.props.stylist.about}</MDBCardText>
               <MDBCardText>Top skills: {this.props.stylist.skills}</MDBCardText>
-              <MDBBtn color="amber" onClick={this.pushToStylistPage(this.props.stylist.id)}>View Profile</MDBBtn>
+              <MDBBtn color="amber" onClick={() => this.pushToStylistPage(this.props.stylist.id)}>View Profile</MDBBtn>
             </MDBCardBody>
           </MDBCard>
         </MDBContainer>

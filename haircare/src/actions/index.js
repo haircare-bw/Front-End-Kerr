@@ -1,4 +1,5 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+// import stylistData from '../../src/stylistData';
 
 //loginPage actions & actionCreator
 export const LOGIN_START = 'LOGIN_START';
@@ -60,14 +61,15 @@ export const getStylists = () => dispatch => {
 }
 
 //fetching profile data for stylist user to see on login/signup
+//MAY NOT NEED THIS ACTION - REMOVE
 export const FETCH_PROFILE_START = 'FETCH_PROFILE_START';
 export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';
 export const FETCH_PROFILE_FAILURE = 'FETCH_PROFILE_FAILURE';
 
-export const getProfiles = () => dispatch => {
+export const getProfiles = (id) => dispatch => {
   dispatch({ type: FETCH_PROFILE_START })
   axiosWithAuth()
-    .get('/users')
+    .get(`/users/${id}`)
     .then(res => {
       console.log('profile', res.data)
       dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data })

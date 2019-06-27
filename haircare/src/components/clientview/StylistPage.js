@@ -23,12 +23,11 @@ class StylistPage extends React.Component {
         
                   { <div className="portfolio-container"> 
                       <img
-                        src='https://source.unsplash.com/collection/391411'
-                        // src={this.props.stylistPerson.profile_img}
-                        alt={this.props.stylistPerson.name}
+                        // src='https://source.unsplash.com/collection/391411'
+                        src={this.props.stylistPerson.profile_img}
+                        alt={this.props.stylistPerson.username}
                         className="portfolio-img"
                       />
-                      <p> {this.props.stylistPerson.about} </p> <br />
                       <span> {this.props.stylistPerson.skills} </span>
                   </div> }
                   {/* {this.props.stylistPerson.portfolio_img} */}

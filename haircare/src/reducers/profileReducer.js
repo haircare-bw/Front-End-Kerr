@@ -15,6 +15,7 @@ import {
 
 const initialState = {
   profiles: [],
+  activePost: {},
   error: '',
   fetchingProfile: false,
   addingPost: false,
