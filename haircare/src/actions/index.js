@@ -13,7 +13,7 @@ export const login = creds => dispatch => {
     .then(res => {
       console.log("response", res.data);
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("userId", res.data);
+      localStorage.setItem("userId", res.data.ID);
       dispatch({ type: LOGIN_SUCCESS });
       return true;
     })
@@ -104,12 +104,13 @@ export const ADD_POST_START = "ADD_POST_START";
 export const ADD_POST_SUCCESS = "ADD_POST_SUCCESS";
 export const ADD_POST_FAILURE = "ADD_POST_FAILURE";
 
-export const addPost = (newPost, id) => dispatch => {
+export const addPost = newPost => dispatch => {
   dispatch({ type: ADD_POST_START });
   axiosWithAuth()
-    .post("/users", newPost, id)
+    .post("/users/posts", newPost)
     .then(res => {
       dispatch({ type: ADD_POST_SUCCESS, payload: res.data });
+      this.props.history.push("/profile");
     })
     .catch(err => {
       dispatch({ type: ADD_POST_FAILURE, payload: err.response });
