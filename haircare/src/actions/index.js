@@ -67,7 +67,7 @@ export const FETCH_PROFILE_FAILURE = 'FETCH_PROFILE_FAILURE';
 export const getProfiles = () => dispatch => {
   dispatch({ type: FETCH_PROFILE_START })
   axiosWithAuth()
-    .get('/stylists')
+    .get('/users')
     .then(res => {
       console.log('profile', res.data)
       dispatch({ type: FETCH_PROFILE_SUCCESS, payload: res.data })
@@ -84,7 +84,7 @@ export const GET_STYLIST_BY_ID_FAILURE = 'GET_STYLIST_BY_ID_FAILURE';
 export const getStylistId = id => dispatch => {
   dispatch({ type: GET_STYLIST_BY_ID_START })
   axiosWithAuth()
-    .get(`/stylists/${id}`)
+    .get(`/users/${id}`)
     .then(res => {
       dispatch({ type: GET_STYLIST_BY_ID_SUCCESS, payload: res.data })
     })
@@ -101,10 +101,10 @@ export const ADD_POST_START = 'ADD_POST_START';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
 
-export const addPost = newPost => dispatch => {
+export const addPost = (newPost, id) => dispatch => {
   dispatch({ type: ADD_POST_START })
   axiosWithAuth()
-    .post('/stylists', newPost)
+    .post('/users', newPost, id)
     .then(res => {
       dispatch({ type: ADD_POST_SUCCESS, payload: res.data })
     })
@@ -120,7 +120,7 @@ export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 export const deletePost = id => dispatch => {
   dispatch({ type: DELETE_POST_START })
   axiosWithAuth()
-    .delete(`/stylists${id}`)
+    .delete(`/users${id}`)
     .then(res => {
       dispatch({ type: DELETE_POST_SUCCESS, payload: res.data })
     })
@@ -136,7 +136,7 @@ export const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
 export const updateProfile = (id, updatedProfile) => dispatch => {
   dispatch({ type: UPDATE_PROFILE_START })
   axiosWithAuth()
-    .put(`/stylists/${id}`, updatedProfile)
+    .put(`/users/${id}`, updatedProfile)
     .then(res => {
       dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data })
     })

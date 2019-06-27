@@ -51,7 +51,7 @@ class LightboxPage extends React.Component {
   //function to push back to the stylist page after viewing portfolio page
   pushToStylist = (e) => {
     e.preventDefault();
-    this.props.history.push('/stylists')
+    this.props.history.push('/users')
     }
 
   render() {

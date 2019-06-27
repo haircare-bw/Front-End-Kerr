@@ -24,14 +24,15 @@ class StylistPage extends React.Component {
                   { <div className="portfolio-container"> 
                       <img
                         // src={this.props.stylistPerson.profilePhoto}
-                        src='https://source.unsplash.com/collection/391411'
+                        src={this.props.stylistPerson.profile_img}
                         alt={this.props.stylistPerson.name}
                         className="portfolio-img"
                       />
                       <p> {this.props.stylistPerson.about} </p> <br />
                       <span> {this.props.stylistPerson.skills} </span>
                   </div> }
-                <LightBox />
+                  {this.props.stylistPerson.portfolio_img}
+                {/* <LightBox /> */}
       </div>
     )
   }
@@ -49,3 +50,5 @@ export default withRouter (
   { getStylistId }
 )(StylistPage)
 );
+
+//https://source.unsplash.com/collection/391411

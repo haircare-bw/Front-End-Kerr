@@ -2,6 +2,7 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions';
+import axios from 'axios';
 import { 
   MDBContainer, 
   MDBRow, 
@@ -17,7 +18,8 @@ class AddPostForm extends React.Component {
   state= {
     posts: {
       image: '',
-      description: ''
+      description: '',
+      fileSelected: ''
     }
   }
 
@@ -31,11 +33,37 @@ class AddPostForm extends React.Component {
   }
   
   //need a function to handle accepting the image upload
+  selectedFile = e => {
+    console.log('file event: ',e.target.files[0])
+    this.setState({
+      fileSelected: e.target.files[0]
+    })
+  }
+
+//need api endpoint from backend to accept imageDate & upload
+  fileUpload = e => {
+    e.preventDefault();
+    
+    const fd = new FormData();
+    fd.append('image', this.state.fileSelected, this.state.fileSelected.name)
+    
+    axios
+      .post('/endpointFromBackEndApi', fd)
+      .then(res => {
+        console.log('File Upload response: ',res)
+        this.setState({
+            posts: {
+              ...this.state.posts,
+              image: res.data.image
+            }
+          })
+        })
+      }
 
   addNewPost = e => {
     e.preventDefault();
     this.props.addPost(this.state.posts)
-    this.props.history.push('/profile')
+    this.props.history.push('/users')
     this.setState({
       image: '',
       description: ''
@@ -54,9 +82,13 @@ class AddPostForm extends React.Component {
                       <div className="grey-text">
                         <div className="input-group">
                             <div className="input-group-prepend">
-                              <span className="input-group-text" id="inputGroupFileAddon01">
+                              <button 
+                                className="input-group-text" 
+                                id="inputGroupFileAddon01"
+                                onClick={this.fileUpload}
+                                >
                                 Upload
-                              </span>
+                              </button>
                             </div>
                             <div className="custom-file">
                               <input
@@ -66,7 +98,7 @@ class AddPostForm extends React.Component {
                                 aria-describedby="inputGroupFileAddon01"
                                 name="image"
                                 value={this.state.image}
-                                onChange={this.handleChange}
+                                onChange={this.selectedFile}
                               />
                               <label className="custom-file-label" htmlFor="inputGroupFile01">
                                 Choose file
