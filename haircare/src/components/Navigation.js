@@ -26,9 +26,9 @@ class Navigation extends React.Component {
               <li>
                 <Link to="/profile">Profile Page</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/addnewpost">New Post Form</Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/login">Login</Link>
               </li>
@@ -45,7 +45,8 @@ class Navigation extends React.Component {
             <PrivateRouteClient exact path="/stylists" component={Stylist} />
             <PrivateRouteClient exact path="/stylistpage/:id" component={StylistPage} />  
             <PrivateRouteStylist exact path="/profile" component={ProfilePage} />
-            <PrivateRouteStylist exact path="/addnewpost" component={AddPostForm} />          
+            <PrivateRouteStylist exact path="/addnewpost" component={AddPostForm} />
+            {/* <PrivateRouteStylist exact path="/updatepost" component={UpdatePost} />           */}
           </div>
     );
   }

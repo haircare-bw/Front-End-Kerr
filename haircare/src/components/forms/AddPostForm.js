@@ -17,9 +17,10 @@ import {
 class AddPostForm extends React.Component {
   state= {
     posts: {
-      image: '',
+      stylists_id: parseInt(localStorage.getItem('userId')),
+      title: '',
+      post_image: '',
       description: '',
-      fileSelected: ''
     }
   }
 
@@ -32,34 +33,6 @@ class AddPostForm extends React.Component {
     })
   }
   
-  //need a function to handle accepting the image upload
-  selectedFile = e => {
-    console.log('file event: ',e.target.files[0])
-    this.setState({
-      fileSelected: e.target.files[0]
-    })
-  }
-
-//need api endpoint from backend to accept imageDate & upload
-  fileUpload = e => {
-    e.preventDefault();
-    
-    const fd = new FormData();
-    fd.append('image', this.state.fileSelected)
-    
-    axios
-      .post('/endpointFromBackEndApi', fd)
-      .then(res => {
-        console.log('File Upload response: ',res)
-        this.setState({
-            posts: {
-              ...this.state.posts,
-              image: res.data.image
-            }
-          })
-        })
-      }
-
   addNewPost = e => {
     e.preventDefault();
     this.props.addPost(this.state.posts)
@@ -71,6 +44,7 @@ class AddPostForm extends React.Component {
   }
 
   render() {
+    console.log('POST WORKS? ', this.state.posts)
     return (
         <MDBContainer>
             <MDBRow>
@@ -80,37 +54,30 @@ class AddPostForm extends React.Component {
                     <form onSubmit={this.addNewPost}>
                       <p className="h4 text-center py-4">Let's update your Portfolio!</p>
                       <div className="grey-text">
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                              <button 
-                                className="input-group-text" 
-                                id="inputGroupFileAddon01"
-                                onClick={this.fileUpload}
-                                >
-                                Upload
-                              </button>
-                            </div>
-                            <div className="custom-file">
-                              <input
-                                type="file"
-                                className="custom-file-input"
-                                id="inputGroupFile01"
-                                aria-describedby="inputGroupFileAddon01"
-                                name="image"
-                                value={this.state.image}
-                                onChange={this.selectedFile}
-                              />
-                              <label className="custom-file-label" htmlFor="inputGroupFile01">
-                                Choose file
-                              </label>
-                            </div>
-                          </div>
+                        <MDBInput
+                          label="Title"
+                          group
+                          type="text"
+                          validate
+                          name="title"
+                          value={this.state.title}
+                          onChange={this.handleChange}
+                        />
+                        <MDBInput
+                          label="Image Url"
+                          group
+                          type="text"
+                          validate
+                          name="post_image"
+                          value={this.state.post_image}
+                          onChange={this.handleChange}
+                        />
                         <MDBInput
                           label="Description"
                           group
                           type="text"
                           validate
-                          name="descripton"
+                          name="description"
                           value={this.state.description}
                           onChange={this.handleChange}
                         />
