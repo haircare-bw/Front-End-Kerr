@@ -1,0 +1,7 @@
+[Settings]
+ID = '65d0d473-c8ed-48c8-bfb6-08e02c4d8e8d'
+
+[build]
+base = 'haircare/'
+publish = 'haircare/build'
+command = 'yarn build'
