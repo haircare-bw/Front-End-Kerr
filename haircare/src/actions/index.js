@@ -158,12 +158,14 @@ export const UPDATE_ACTIVE_POST_FAILURE = `UPDATE_ACTIVE_POST_FAILURE`;
 export const updateActivePost = post => dispatch => {
   dispatch({ type: UPDATE_ACTIVE_POST_START });
   console.log('ACTIVE POST MESSAGE: ', post)
-  dispatch({ type: UPDATE_ACTIVE_POST_SUCCESS, payload: post });
-
-  dispatch({
-    type: UPDATE_ACTIVE_POST_FAILURE,
-    payload: "There was an error accessing the object"
-  });
+  if (post !== undefined) {
+    dispatch({ type: UPDATE_ACTIVE_POST_SUCCESS, payload: post });
+  } else {
+    dispatch({
+      type: UPDATE_ACTIVE_POST_FAILURE,
+      payload: "There was an error accessing the object"
+    });
+  }
 };
 
 export const UPDATE_POST_START = `UPDATE_POST_START`;

@@ -17,6 +17,7 @@ import {
 class UpdateForm extends React.Component {
   state = {
     post: {
+      id: this.props.activePost.id,
       stylists_id: this.props.activePost.stylists_id,
       title: this.props.activePost.title,
       posts_image: this.props.activePost.posts_image,
@@ -27,12 +28,17 @@ class UpdateForm extends React.Component {
   handleChange = e => {
     e.persist();
     this.setState(prevState => ({
-      profiles: {
-        ...prevState.profiles,
+      post: {
+        ...prevState.post,
         [e.target.name]: e.target.value
       }
     }));
   };
+
+  updateCurrentPost = () => {
+    this.props.updatePost(this.state.post.id, this.state.post)
+    this.props.history.push("/profile");
+  }
 
   render() {
     console.log("PROPS IN UPDATE FORM: ", this.props.activePost);
@@ -43,7 +49,7 @@ class UpdateForm extends React.Component {
           <MDBCol md="6">
             <MDBCard>
               <MDBCardBody>
-                <form onSubmit={this.addNewPost}>
+                <form onSubmit={this.updateCurrentPost()}>
                   <p className="h4 text-center py-4">
                     Let's Update your Portfolio!
                   </p>
@@ -54,7 +60,7 @@ class UpdateForm extends React.Component {
                       type="text"
                       validate
                       name="title"
-                      // value={}
+                      value={this.state.post.title}
                       onChange={this.handleChange}
                     />
                     <MDBInput
@@ -63,7 +69,7 @@ class UpdateForm extends React.Component {
                       type="text"
                       validate
                       name="posts_image"
-                      // value={}
+                      value={this.state.post.posts_image}
                       onChange={this.handleChange}
                     />
                     <MDBInput
@@ -72,7 +78,7 @@ class UpdateForm extends React.Component {
                       type="text"
                       validate
                       name="description"
-                      // value={}
+                      value={this.state.post.description}
                       onChange={this.handleChange}
                     />
                   </div>

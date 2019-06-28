@@ -20,6 +20,7 @@ const initialState = {
   fetchingStylists: false,
   stylistPerson: {},
   deleteSuccessMessage: '',
+  updatingPost: false,
 }
 
 export const stylistReducer = (state = initialState, action) => {
@@ -89,6 +90,24 @@ export const stylistReducer = (state = initialState, action) => {
       error: action.payload,
       deletingPost: false
     };
+    case UPDATE_POST_START:
+      return {
+        ...state,
+        error: '',
+        updatingPost: true
+      }
+    case UPDATE_PROFILE_SUCCESS:
+      return {
+      ...state,
+      error: '',
+      updatingPost: false
+      }
+    case UPDATE_POST_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        updatingPost: false
+      }
     default:
       return state;
   }
