@@ -17,8 +17,6 @@ import {
 class UpdateForm extends React.Component {
   state = {
     post: {
-      id: this.props.activePost.id,
-      stylists_id: this.props.activePost.stylists_id,
       title: this.props.activePost.title,
       posts_image: this.props.activePost.posts_image,
       description: this.props.activePost.description
@@ -35,8 +33,9 @@ class UpdateForm extends React.Component {
     }));
   };
 
-  updateCurrentPost = () => {
-    this.props.updatePost(this.state.post.id, this.state.post)
+  updateCurrentPost = (e) => {
+    e.preventDefault();
+    this.props.updatePost(this.props.activePost.id, this.state.post)
     this.props.history.push("/profile");
   }
 
@@ -49,7 +48,7 @@ class UpdateForm extends React.Component {
           <MDBCol md="6">
             <MDBCard>
               <MDBCardBody>
-                <form onSubmit={this.updateCurrentPost()}>
+                <form>
                   <p className="h4 text-center py-4">
                     Let's Update your Portfolio!
                   </p>
@@ -83,7 +82,11 @@ class UpdateForm extends React.Component {
                     />
                   </div>
                   <div className="text-center py-4 mt-3">
-                    <MDBBtn color="amber" type="submit">
+                    <MDBBtn 
+                      color="amber" 
+                      type="submit"
+                      onClick={(e) => this.updateCurrentPost(e)}
+                      >
                       {this.props.updatingPost ? (
                         <Loader
                           type="ThreeDots"

@@ -175,7 +175,7 @@ export const UPDATE_POST_FAILURE = `UPDATE_POST_FAILURE`;
 export const updatePost = (id, post) => dispatch => {
   dispatch({ type: UPDATE_POST_START });
   axiosWithAuth()
-    .put(`/users/${id}/posts`)
+    .put(`/users/${id}/posts`, post)
     .then(res => {
       console.log('PUT REQUEST', res.data)
       dispatch({ type: UPDATE_POST_SUCCESS, payload: post })
