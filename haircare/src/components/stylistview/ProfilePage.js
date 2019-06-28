@@ -34,11 +34,6 @@ class ProfilePage extends React.Component {
     this.props.history.push("/update-post");
   };
 
-  // setUpdateForm = (e, post) => {
-  //   e.preventDefault();
-  //   this.setState({ activePost: post });
-  //   this.props.history.push("/update-post");
-  // };
 
   deleteOldPost = id => {
     this.props.deletePost(id);
