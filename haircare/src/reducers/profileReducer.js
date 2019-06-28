@@ -5,9 +5,6 @@ import {
   ADD_POST_START,
   ADD_POST_SUCCESS,
   ADD_POST_FAILURE,
-  DELETE_POST_START,
-  DELETE_POST_SUCCESS,
-  DELETE_POST_FAILURE,
   UPDATE_PROFILE_START,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAILURE,
@@ -102,25 +99,6 @@ export const profileReducer = (state = initialState, action) => {
         ...state,
         updatingPost: true,
         error: action.payload
-      };
-    case DELETE_POST_START:
-      return {
-        ...state,
-        error: "",
-        deletingPost: true
-      };
-    case DELETE_POST_SUCCESS:
-      return {
-        ...state,
-        error: "",
-        deletingPost: false,
-        profiles: action.payload
-      };
-    case DELETE_POST_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-        deletingPost: false
       };
     default:
       return state;

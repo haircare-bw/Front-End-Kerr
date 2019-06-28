@@ -4,7 +4,7 @@ import axios from "axios";
 import Loader from "react-loader-spinner";
 import { withRouter } from "react-router-dom";
 import { MDBBtn } from "mdbreact";
-import { getStylistId, addPost, updateActivePost } from "../../actions";
+import { getStylistId, addPost, deletePost } from "../../actions";
 // import LightBox from '../clientview/LightBox';
 import "../clientview/stylist.css";
 
@@ -24,34 +24,23 @@ class ProfilePage extends React.Component {
     this.props.history.push("/addnewpost");
   };
 
+  pushToUpdateForm = () => {
+    this.props.history.push("/update-form")
+  };
+
   setUpdateForm = (e, post) => {
     e.preventDefault();
     this.setState({ activePost: post });
-    this.props.history.push("/update-form");
+    this.props.history.push("/update-post");
   };
 
-  updatePost = (id, post) => {
-    axios
-      .put(`/users/${id}`, post)
-      .then(res => {
-        this.setState({ posts: res.data });
-        this.props.history.push(`/profile`);
-      })
-      .catch(err => console.log(err));
-  };
 
-  deletePost = (id, post) => {
-    axios
-      .put(`/users/${id}`, post)
-      .then(res => {
-        this.setState({ posts: res.data });
-        this.props.history.push(`/profile`);
-      })
-      .catch(err => console.log(err));
-  };
+  deleteOldPost = (id) => {
+    this.props.deletePost(id)
+  }
 
   pushToUpdateForm = () => {
-    this.props.history.push("/update-form");
+    this.props.history.push("/update-post");
   };
 
   render() {
@@ -60,7 +49,7 @@ class ProfilePage extends React.Component {
     console.log("STYLIST PAGE PROPS: ", stylist);
     return (
       <div>
-        <button onClick={() => this.pushToAddPostForm()}>Add New Post</button>
+        <MDBBtn onClick={() => this.pushToAddPostForm()}>Add New Post</MDBBtn>
         {stylist === undefined ? (
           <Loader type="Puff" color="#ffb900" height="60" width="60" />
         ) : (
@@ -86,8 +75,8 @@ class ProfilePage extends React.Component {
                   <h2>{post.title}</h2>
                   <img src={post.posts_image} />
                   <p>{post.description}</p>
-                  <button onClick={() => {}}>Update</button>
-                  <button onClick={() => {}}>Delete</button>
+                  <MDBBtn onClick={() => {this.pushToUpdateForm()}}>Update</MDBBtn>
+                  <MDBBtn onClick={() => {this.deleteOldPost(post.id)}}>Delete</MDBBtn>
                 </div>
               );
             })}
@@ -104,13 +93,14 @@ class ProfilePage extends React.Component {
 
 const mapStateToProps = state => ({
   stylistPerson: state.stylistReducer.stylistPerson,
-  fetchingStylists: state.stylistReducer.fetchingStylists
+  fetchingStylists: state.stylistReducer.fetchingStylists,
+  deleteSuccessMessage: state.stylistReducer.deleteSuccessMessage
 });
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { getStylistId, addPost }
+    { getStylistId, addPost, deletePost }
   )(ProfilePage)
 );
 

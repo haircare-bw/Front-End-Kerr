@@ -8,6 +8,7 @@ import Stylist from './clientview/Stylist';
 import StylistPage from './clientview/StylistPage';
 import ProfilePage from './stylistview/ProfilePage';
 import AddPostForm from './forms/AddPostForm';
+import UpdateForm from './forms/UpdateForm';
 import PrivateRouteClient from './privateroute/PrivateRouteClient';
 import PrivateRouteStylist from './privateroute/PrivateRouteStylist';
 import { MDBBtn } from "mdbreact";
@@ -42,11 +43,13 @@ class Navigation extends React.Component {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={LoginForm} />
             <Route path="/newaccount" component={NewAccountForm} />
+
             <PrivateRouteClient exact path="/stylists" component={Stylist} />
-            <PrivateRouteClient exact path="/stylistpage/:id" component={StylistPage} />  
+            <PrivateRouteClient exact path="/stylistpage/:id" component={StylistPage} />
+
             <PrivateRouteStylist exact path="/profile" component={ProfilePage} />
             <PrivateRouteStylist exact path="/addnewpost" component={AddPostForm} />
-            {/* <PrivateRouteStylist exact path="/updatepost" component={UpdatePost} />           */}
+            <PrivateRouteStylist exact path="/update-post" component={UpdateForm} />          
           </div>
     );
   }

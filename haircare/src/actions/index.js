@@ -110,7 +110,7 @@ export const addPost = newPost => dispatch => {
     .post("/users/posts", newPost)
     .then(res => {
       dispatch({ type: ADD_POST_SUCCESS, payload: res.data });
-      this.props.history.push("/profile");
+      
     })
     .catch(err => {
       dispatch({ type: ADD_POST_FAILURE, payload: err.response });
@@ -124,9 +124,10 @@ export const DELETE_POST_FAILURE = "DELETE_POST_FAILURE";
 export const deletePost = id => dispatch => {
   dispatch({ type: DELETE_POST_START });
   axiosWithAuth()
-    .delete(`/users${id}`)
+    .delete(`/users/${id}/posts`)
     .then(res => {
-      dispatch({ type: DELETE_POST_SUCCESS, payload: res.data });
+      console.log(res.data)
+      dispatch({ type: DELETE_POST_SUCCESS, payload: id });
     })
     .catch(err => {
       dispatch({ type: DELETE_POST_FAILURE, payload: err.response });
