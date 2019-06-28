@@ -1,12 +1,13 @@
 //delete btn here with the deletePost();
-import React from 'react';
-import { updateProfile } from '../../actions';
-import Loader from 'react-loader-spinner';
-import { connect } from 'react-redux';
-import { 
-  MDBContainer, 
-  MDBRow, 
-  MDBCol, 
+import React from "react";
+import Loader from "react-loader-spinner";
+import { connect } from "react-redux";
+import { updatePost } from "../../actions";
+
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
   MDBInput,
   MDBBtn,
   MDBCard,
@@ -14,29 +15,41 @@ import {
 } from "mdbreact";
 
 class UpdateForm extends React.Component {
-  state ={
-    profiles: this.props.profiles
-  }
+  state = {
+    post: {
+      id: this.props.activePost.id,
+      stylists_id: this.props.activePost.stylists_id,
+      title: this.props.activePost.title,
+      posts_image: this.props.activePost.posts_image,
+      description: this.props.activePost.description
+    }
+  };
 
   handleChange = e => {
     e.persist();
     this.setState(prevState => ({
-      profiles: {
-        ...prevState.profiles,
+      post: {
+        ...prevState.post,
         [e.target.name]: e.target.value
       }
-    }))
+    }));
+  };
+
+  updateCurrentPost = () => {
+    this.props.updatePost(this.state.post.id, this.state.post)
+    this.props.history.push("/profile");
   }
 
   render() {
-    console.log('PROPS IN UPDATE FORM: ', this.props)
-    return(
+    console.log("PROPS IN UPDATE FORM: ", this.props.activePost);
+    console.log("UPDATE FORM STATE", this.state.post);
+    return (
       <MDBContainer>
         <MDBRow>
           <MDBCol md="6">
             <MDBCard>
               <MDBCardBody>
-                <form onSubmit={this.addNewPost}>
+                <form onSubmit={this.updateCurrentPost()}>
                   <p className="h4 text-center py-4">
                     Let's Update your Portfolio!
                   </p>
@@ -47,7 +60,7 @@ class UpdateForm extends React.Component {
                       type="text"
                       validate
                       name="title"
-                      // value={}
+                      value={this.state.post.title}
                       onChange={this.handleChange}
                     />
                     <MDBInput
@@ -56,7 +69,7 @@ class UpdateForm extends React.Component {
                       type="text"
                       validate
                       name="posts_image"
-                      // value={}
+                      value={this.state.post.posts_image}
                       onChange={this.handleChange}
                     />
                     <MDBInput
@@ -65,7 +78,7 @@ class UpdateForm extends React.Component {
                       type="text"
                       validate
                       name="description"
-                      // value={}
+                      value={this.state.post.description}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -89,7 +102,7 @@ class UpdateForm extends React.Component {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
-    )
+    );
   }
 }
 
@@ -100,6 +113,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps, 
-  { updateProfile }
-  )(UpdateForm);
+  mapStateToProps,
+  { updatePost }
+)(UpdateForm);

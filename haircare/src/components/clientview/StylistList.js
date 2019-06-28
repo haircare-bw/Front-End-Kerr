@@ -9,10 +9,7 @@ class StylistList extends React.Component {
     dislike: false
   }
   
-  //remove testId and pass in actual id from api with no colon!!!
   pushToStylistPage = (id) => {
-    // let TestId = 2
-    // console.log(id)
       this.props.history.push(`/stylistpage/${id}`)
     }
 
@@ -33,7 +30,7 @@ class StylistList extends React.Component {
   render() {
     //console.log(this.props);
     return(
-      <div>
+      <div id="stylist-list-cards">
         <MDBContainer>
           <MDBCard style={{ width: "22rem" }}>
             <MDBCardImage className="img-fluid" src="https://source.unsplash.com/collection/391411" waves />
@@ -41,9 +38,11 @@ class StylistList extends React.Component {
               {this.state.liked ? 
                 <i onClick={this.toggleLike} className="fas fa-thumbs-up"></i> 
                   : <i onClick={this.toggleLike} className="far fa-thumbs-up"></i> }
-              {this.state.dislike ? 
+                  <div>
+              {this.state.dislike && !this.state.liked ? 
                 <i onClick={this.toggleDislike} className="fas fa-thumbs-down"></i> 
                   : <i onClick={this.toggleDislike} className="far fa-thumbs-down"></i> }
+                  </div>
             </div>
             <MDBCardBody>
               <MDBCardTitle>{this.props.stylist.username}</MDBCardTitle>
@@ -60,9 +59,3 @@ class StylistList extends React.Component {
 }
 
 export default withRouter (StylistList);
-
-//render & style stylists data here from Style component
-//use Card decks from MDB to style
-
-
-//src={this.props.stylist.profile_img}
