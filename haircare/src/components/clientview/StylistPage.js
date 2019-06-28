@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { withRouter } from 'react-router-dom';
 import { getStylistId } from '../../actions';
-import LightBox from './LightBox';
+import { MDBBtn } from "mdbreact";
 import './stylist.css';
+import LightBox from './LightBox';
 
 class StylistPage extends React.Component {
   componentDidMount() {
@@ -13,25 +14,46 @@ class StylistPage extends React.Component {
     this.props.getStylistId(id);
   }
 
+  pushToStylist = (e) => {
+    e.preventDefault();
+    this.props.history.push('/stylists')
+    }
+
   render() {
+    const { stylist } = this.props.stylistPerson;
     return(
       <div>
-        {this.props.fetchingStylists && ( 
-            <Loader type="Puff" color="#ffb900" height="60" width="60" />
+        {stylist === undefined ? (
+          <Loader type="Puff" color="#ffb900" height="60" width="60" />
+        ) : (
+          <div>
+            <LightBox />
+            <h1 className="portfolio-page-title">
+              <span className="portfolio-name">{stylist.username}'s</span> P O R T F O L I O{" "}
+            </h1>
+
+            <div className="portfolio-container">
+              <img
+                src={stylist.profile_img}
+                alt={stylist.username}
+                className="portfolio-img"
+              />
+              <p className="portfolio-skills title">I am best at: </p> <br />
+              <span className="portfolio-skills"> {stylist.skills} </span>
+            </div>
+
+            {stylist.posts.map(post => {
+              return (
+                <div key={post.id}>
+                  <h2>{post.title}</h2>
+                  <img src={post.posts_image} alt={post.username} />
+                  <p>{post.description}</p>
+                </div>
+              );
+            })}
+            <MDBBtn color="amber" onClick={this.pushToStylist}>Back</MDBBtn>
+          </div>
         )}
-        <h1><span>{this.props.stylistPerson.username}'s</span> P O R T F O L I O </h1>
-        
-                  { <div className="portfolio-container"> 
-                      <img
-                        // src='https://source.unsplash.com/collection/391411'
-                        src={this.props.stylistPerson.profile_img}
-                        alt={this.props.stylistPerson.username}
-                        className="portfolio-img"
-                      />
-                      <span> {this.props.stylistPerson.skills} </span>
-                  </div> }
-                  {/* {this.props.stylistPerson.portfolio_img} */}
-                <LightBox />
       </div>
     )
   }
@@ -50,4 +72,4 @@ export default withRouter (
 )(StylistPage)
 );
 
-//https://source.unsplash.com/collection/391411
+//https://source.unsplash.com/400x400/collection/391411

@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from 'react-router';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import Lightbox from "react-image-lightbox";
 import "./Lightbox.css";
 
@@ -9,18 +9,11 @@ class LightboxPage extends React.Component {
     photoIndex: 0,
     isOpen: false,
     images: [
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(58).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(61).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(62).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(60).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(66).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(70).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(74).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(64).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(77).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(78).jpg',
-      'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(76).jpg',
-    ],
+      'https://source.unsplash.com/400x400/?beauty,blackman',
+      'https://source.unsplash.com/400x400/?beauty,blackwoman',
+      'https://source.unsplash.com/400x400/?fashion,portrait',
+      'https://source.unsplash.com/400x400/?beauty,hair',
+      ],
     colWidth: [3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3]
   }
 
@@ -47,12 +40,6 @@ class LightboxPage extends React.Component {
       );
     })
   }
-
-  //function to push back to the stylist page after viewing portfolio page
-  pushToStylist = (e) => {
-    e.preventDefault();
-    this.props.history.push('/stylists')
-    }
 
   render() {
     const { photoIndex, isOpen, images } = this.state;
@@ -82,9 +69,6 @@ class LightboxPage extends React.Component {
             }
           />
         )}
-        <MDBCol md="12" className="text-center py-4">
-          <MDBBtn color="amber" onClick={this.pushToStylist}>Back</MDBBtn>
-        </MDBCol>
       </MDBContainer >
     );
   }

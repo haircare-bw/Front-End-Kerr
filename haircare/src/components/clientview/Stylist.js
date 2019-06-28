@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner';
 import { withRouter } from 'react-router-dom';
 import { getStylists } from '../../actions';
 import StylistList from './StylistList';
-//map over stylists here from api
+import './stylist.css';
 
 class Stylist extends React.Component {
   componentDidMount() {
@@ -15,7 +15,7 @@ class Stylist extends React.Component {
     return(
       <div>
         
-        <h1>Stylists Near You</h1>
+        <h1 className="stylist-title"><i className="fas fa-map-marker-alt"></i>Stylists Near You</h1>
         {this.props.fetchingStylists && ( 
             <Loader type="Puff" color="#ffb900" height="60" width="60" />
         )}
@@ -35,7 +35,6 @@ const mapStateToProps = state => ({
   stylists: state.stylistReducer.stylists,
   error: state.stylistReducer.error,
   fetchingStylists: state.stylistReducer.fetchingStylists,
-  // stylistPerson: state.stylistReducer.stylistPerson
 })
 
 export default withRouter (
