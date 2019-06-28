@@ -1,9 +1,10 @@
 //delete btn here with the deletePost();
 import React from 'react';
-import { updateProfile } from '../../actions';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
-import { 
+import { updatePost } from '../../actions';
+
+import {
   MDBContainer, 
   MDBRow, 
   MDBCol, 
@@ -29,7 +30,7 @@ class UpdateForm extends React.Component {
   }
 
   render() {
-    console.log('PROPS IN UPDATE FORM: ', this.props)
+    console.log('PROPS IN UPDATE FORM: ', this.props.activePost)
     return(
       <MDBContainer>
         <MDBRow>
@@ -101,5 +102,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps, 
-  { updateProfile }
+  { updatePost }
   )(UpdateForm);

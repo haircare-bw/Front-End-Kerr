@@ -4,7 +4,7 @@ import axios from "axios";
 import Loader from "react-loader-spinner";
 import { withRouter } from "react-router-dom";
 import { MDBBtn } from "mdbreact";
-import { getStylistId, addPost, deletePost } from "../../actions";
+import { getStylistId, addPost, deletePost, updateActivePost } from "../../actions";
 // import LightBox from '../clientview/LightBox';
 import "../clientview/stylist.css";
 
@@ -24,15 +24,17 @@ class ProfilePage extends React.Component {
     this.props.history.push("/addnewpost");
   };
 
-  pushToUpdateForm = () => {
+  pushToUpdateForm = (post) => {
+    this.props.updateActivePost(post)
     this.props.history.push("/update-form")
   };
 
-  setUpdateForm = (e, post) => {
-    e.preventDefault();
-    this.setState({ activePost: post });
-    this.props.history.push("/update-post");
-  };
+  // setUpdateForm = (e, post) => {
+  //   e.preventDefault();
+  //   this.setState({ activePost: post });
+  //   this.props.history.push("/update-post");
+  // };
+
 
 
   deleteOldPost = (id) => {
@@ -75,7 +77,7 @@ class ProfilePage extends React.Component {
                   <h2>{post.title}</h2>
                   <img src={post.posts_image} />
                   <p>{post.description}</p>
-                  <MDBBtn onClick={() => {this.pushToUpdateForm()}}>Update</MDBBtn>
+                  <MDBBtn onClick={() => {this.pushToUpdateForm(post)}}>Update</MDBBtn>
                   <MDBBtn onClick={() => {this.deleteOldPost(post.id)}}>Delete</MDBBtn>
                 </div>
               );
@@ -94,13 +96,14 @@ class ProfilePage extends React.Component {
 const mapStateToProps = state => ({
   stylistPerson: state.stylistReducer.stylistPerson,
   fetchingStylists: state.stylistReducer.fetchingStylists,
-  deleteSuccessMessage: state.stylistReducer.deleteSuccessMessage
+  deleteSuccessMessage: state.stylistReducer.deleteSuccessMessage,
+  activePost: state.profileReducer.activePost
 });
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { getStylistId, addPost, deletePost }
+    { getStylistId, addPost, deletePost, updateActivePost }
   )(ProfilePage)
 );
 

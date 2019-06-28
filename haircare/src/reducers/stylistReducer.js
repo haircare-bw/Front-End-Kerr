@@ -9,6 +9,9 @@ import {
   DELETE_POST_START,
   DELETE_POST_SUCCESS,
   DELETE_POST_FAILURE,
+  UPDATE_POST_START,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_POST_FAILURE
 } from '../actions';
 
 const initialState = {

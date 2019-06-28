@@ -150,13 +150,14 @@ export const updateProfile = (id, updatedProfile) => dispatch => {
     });
 };
 
+//updating locatState, pushing currentState into the form
 export const UPDATE_ACTIVE_POST_START = `UPDATE_ACTIVE_POST_START`;
 export const UPDATE_ACTIVE_POST_SUCCESS = `UPDATE_ACTIVE_POST_SUCCESS`;
 export const UPDATE_ACTIVE_POST_FAILURE = `UPDATE_ACTIVE_POST_FAILURE`;
 
 export const updateActivePost = post => dispatch => {
   dispatch({ type: UPDATE_ACTIVE_POST_START });
-
+  console.log('ACTIVE POST MESSAGE: ', post)
   dispatch({ type: UPDATE_ACTIVE_POST_SUCCESS, payload: post });
 
   dispatch({
@@ -169,8 +170,14 @@ export const UPDATE_POST_START = `UPDATE_POST_START`;
 export const UPDATE_POST_SUCCESS = `UPDATE_POST_SUCCESS`;
 export const UPDATE_POST_FAILURE = `UPDATE_POST_FAILURE`;
 
-export const updatePost = post => dispatch => {
+export const updatePost = (id, post) => dispatch => {
   dispatch({ type: UPDATE_POST_START });
-
-  axiosWithAuth().put("/users/");
+  axiosWithAuth()
+    .put(`/users/${id}/post`)
+    .then(res => {
+      dispatch({ type: UPDATE_POST_SUCCESS, payload: post })
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_POST_FAILURE, payload: err.response })
+    })
 };
