@@ -54,8 +54,8 @@ class ProfilePage extends React.Component {
           <Loader type="Puff" color="#ffb900" height="60" width="60" />
         ) : (
           <div>
-            <h1>
-              <span>{this.props.stylistPerson.stylist.username}'s</span> P O R T
+            <h1 className="portfolio-page-title">
+              <span className="portfolio-name">{this.props.stylistPerson.stylist.username}'s</span> P O R T
               F O L I O{" "}
             </h1>
 
@@ -66,7 +66,8 @@ class ProfilePage extends React.Component {
                 alt={this.props.stylistPerson.stylist.username}
                 className="portfolio-img"
               />
-              <span> {this.props.stylistPerson.stylist.skills} </span>
+              <p className="portfolio-skills title">I am best at: </p> <br />
+              <span className="portfolio-skills"> {this.props.stylistPerson.stylist.skills} </span>
             </div>
 
             {stylist.posts.map(post => {
