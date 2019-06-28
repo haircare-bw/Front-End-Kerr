@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import { withRouter } from 'react-router-dom';
-import { getStylists } from '../actions';
+import { getStylists } from '../../actions';
 import StylistList from './StylistList';
 //map over stylists here from api
 
@@ -15,9 +15,9 @@ class Stylist extends React.Component {
     return(
       <div>
         
-        <h1>Stylists that Care</h1>
+        <h1>Stylists Near You</h1>
         {this.props.fetchingStylists && ( 
-            <Loader type="Puff" color="#204963" height="60" width="60" />
+            <Loader type="Puff" color="#ffb900" height="60" width="60" />
         )}
 
         {this.props.stylists && (this.props.stylists.map(stylist => (
