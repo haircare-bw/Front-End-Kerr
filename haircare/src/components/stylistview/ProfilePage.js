@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import axios from "axios";
 import Loader from "react-loader-spinner";
 import { withRouter } from "react-router-dom";
 import { MDBBtn } from "mdbreact";
@@ -74,7 +73,7 @@ class ProfilePage extends React.Component {
               return (
                 <div key={post.id}>
                   <h2>{post.title}</h2>
-                  <img src={post.posts_image} />
+                  <img src={post.posts_image} alt={post.username} />
                   <p>{post.description}</p>
                   <MDBBtn
                     onClick={() => {

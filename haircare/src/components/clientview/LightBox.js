@@ -48,11 +48,11 @@ class LightboxPage extends React.Component {
     })
   }
 
-  //function to push back to the stylist page after viewing portfolio page
-  pushToStylist = (e) => {
-    e.preventDefault();
-    this.props.history.push('/stylists')
-    }
+  // //function to push back to the stylist page after viewing portfolio page
+  // pushToStylist = (e) => {
+  //   e.preventDefault();
+  //   this.props.history.push('/stylists')
+  //   }
 
   render() {
     const { photoIndex, isOpen, images } = this.state;
@@ -83,7 +83,7 @@ class LightboxPage extends React.Component {
           />
         )}
         <MDBCol md="12" className="text-center py-4">
-          <MDBBtn color="amber" onClick={this.pushToStylist}>Back</MDBBtn>
+          {/* <MDBBtn color="amber" onClick={this.pushToStylist}>Back</MDBBtn> */}
         </MDBCol>
       </MDBContainer >
     );

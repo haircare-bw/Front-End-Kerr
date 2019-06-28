@@ -56,6 +56,7 @@ class Navigation extends React.Component {
   logout = (e) => {
     e.preventDefault();
     localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     this.props.history.push('/login');
   };
 
