@@ -4,8 +4,8 @@ import Loader from 'react-loader-spinner';
 import { withRouter } from 'react-router-dom';
 import { getStylistId } from '../../actions';
 import { MDBBtn } from "mdbreact";
-// import LightBox from './LightBox';
 import './stylist.css';
+import LightBox from './LightBox';
 
 class StylistPage extends React.Component {
   componentDidMount() {
@@ -27,6 +27,7 @@ class StylistPage extends React.Component {
           <Loader type="Puff" color="#ffb900" height="60" width="60" />
         ) : (
           <div>
+            <LightBox />
             <h1>
               <span>{stylist.username}'s</span> P O R T F O L I O{" "}
             </h1>
@@ -70,4 +71,4 @@ export default withRouter (
 )(StylistPage)
 );
 
-//https://source.unsplash.com/collection/391411
+//https://source.unsplash.com/400x400/collection/391411
