@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
-import { newAccount } from '../actions';
+import { newAccount } from '../../actions';
 import { 
   MDBContainer, 
   MDBRow, 
@@ -15,15 +15,16 @@ import {
 
 class NewAccountForm extends React.Component {
   state = {
-    stylists: {
-      username: '',
+    users: {
+      email: '',
       password: '',
+      stylist: ''
     }
   }
 
   handleChange = e => {
     this.setState({
-      stylists: {
+      users: {
         ...this.state.stylists,
         [e.target.name]: e.target.value
       }
@@ -35,12 +36,19 @@ class NewAccountForm extends React.Component {
     this.props.newAccount(this.state.stylists)
     .then(res => {
       if(res) {
-        this.props.history.push('/profile')
+        this.props.history.push('/login')
         }
       })
     this.setState({
-      username: '',
+      email: '',
       password: '',
+    })
+  }
+
+  userStylist = e => {
+    console.log('The btn checked: ',e)
+    this.setState({
+      stylist: e.target.value
     })
   }
 
@@ -55,14 +63,14 @@ class NewAccountForm extends React.Component {
                   <p className="h4 text-center py-4">Let's create your account</p>
                   <div className="grey-text">
                     <MDBInput
-                      label="Name"
+                      label="Email"
                       group
                       type="text"
                       validate
                       error="wrong"
                       success="right"
-                      name="username"
-                      value={this.state.username}
+                      name="email"
+                      value={this.state.email}
                       onChange={this.handleChange}
                     />
                     <MDBInput
@@ -74,41 +82,28 @@ class NewAccountForm extends React.Component {
                       value={this.state.password}
                       onChange={this.handleChange}
                     />
-                    <p>Please choose one:</p>
-                    <div className="custom-control custom-radio custom-control-inline">
-                      <input 
-                        type="radio" 
-                        className="custom-control-input" 
-                        id="defaultInline1" 
-                        name="inlineDefaultRadiosExample"
-                        // value={} 
-                      />
-                      <label 
-                        className="custom-control-label" 
-                        htmlFor="defaultInline1">
-                        Client
-                      </label>
-                    </div>
+                    <p>Are you a stylist?:</p>
                     <div 
                       className="custom-control custom-radio custom-control-inline">
                       <input 
                         type="radio" 
                         className="custom-control-input" 
-                        id="defaultInline2" 
-                        name="inlineDefaultRadiosExample"
-                        // value={} 
+                        name="stylist"
+                        onChange={this.userStylist}
+                        value={this.state.stylist}
+                        // checked={this.state.stylist} 
                       />
                       <label 
                         className="custom-control-label" 
                         htmlFor="defaultInline2">
-                        Stylist
+                        Stylist Yes
                       </label>
                     </div>
                   </div>
                   <div className="text-center py-4 mt-3">
-                    <MDBBtn color="cyan" type="submit">
+                    <MDBBtn color="amber" type="submit">
                         {this.props.addingStylists ? (
-                          <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) 
+                          <Loader type="ThreeDots" color="#ffffff" height="12" width="26" />) 
                             : ('Signup')}
                     </MDBBtn>
                   </div>

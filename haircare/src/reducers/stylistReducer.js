@@ -5,14 +5,18 @@ import {
   FETCH_STYLIST_FAILURE,
   GET_STYLIST_BY_ID_START,
   GET_STYLIST_BY_ID_SUCCESS,
-  GET_STYLIST_BY_ID_FAILURE
+  GET_STYLIST_BY_ID_FAILURE,
+  DELETE_POST_START,
+  DELETE_POST_SUCCESS,
+  DELETE_POST_FAILURE,
 } from '../actions';
 
 const initialState = {
   stylists: [],
   error: '',
   fetchingStylists: false,
-  stylistPerson: {}
+  stylistPerson: {},
+  deleteSuccessMessage: '',
 }
 
 export const stylistReducer = (state = initialState, action) => {
@@ -54,6 +58,34 @@ export const stylistReducer = (state = initialState, action) => {
         error: action.payload,
         fetchingStylists: true
       }
+    case DELETE_POST_START:
+    return {
+      ...state,
+      error: "",
+      deletingPost: true
+    };
+  case DELETE_POST_SUCCESS:
+      const filteredPosts = state.stylistPerson.stylist.posts.filter(post => {
+        return post.id !== action.payload;
+      });
+    return {
+      ...state,
+      error: "",
+      deletingPost: false,
+      deleteSuccessMessage: action.payload,
+      stylistPerson: {
+        stylist: {
+          ...state.stylistPerson.stylist,
+          posts: filteredPosts
+        }
+      }
+    };
+  case DELETE_POST_FAILURE:
+    return {
+      ...state,
+      error: action.payload,
+      deletingPost: false
+    };
     default:
       return state;
   }

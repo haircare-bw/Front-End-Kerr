@@ -34,14 +34,31 @@ ul {
 li {
   list-style: none;
   margin-right: 6px;
-  color: #204963;
+  color: #333652;
 }
 
 a {
   text-decoration: none;
   padding: 6px;
-  color: #204963;
+  color: #333652;
 }
+
+.home-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.home-image {
+  width: 100%;
+  min-width: 1032px;
+}
+
+/* .btn.login-btn {
+  margin-top: -16px;
+  width: 115px;
+  color: #ffb900;
+} */
 
 @keyframes App-logo-spin {
   from {

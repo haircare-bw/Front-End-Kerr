@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 // import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { login } from '../actions';
+import { login } from '../../actions';
 import { 
   MDBContainer, 
   MDBRow, 
@@ -16,7 +16,7 @@ import {
 class LoginForm extends React.Component {
   state = {
     credentials: {
-      username: '',
+      email: '',
       password: ''
     }
   }
@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
     this.props.login(this.state.credentials)
     .then(res => {
       if (res) {
-        this.props.history.push('/protected')
+        this.props.history.push('/stylists')
       }
     })
   }
@@ -52,13 +52,13 @@ class LoginForm extends React.Component {
                   <div className="grey-text">
                     <MDBInput
                       group
-                      label="Username"
-                      type="text"
+                      label="Email"
+                      type="email"
                       validate
                       error="wrong"
                       success="right"
-                      name="username"
-                      value={this.state.credentials.username}
+                      name="email"
+                      value={this.state.credentials.email}
                       onChange={this.handleChange}
                     />
                     <MDBInput
@@ -72,9 +72,9 @@ class LoginForm extends React.Component {
                     />
                   </div>
                   <div className="text-center py-4 mt-3">
-                    <MDBBtn color="cyan" type="submit">
+                    <MDBBtn color="amber" type="submit">
                         {this.props.loggingIn ? (
-                          <Loader type="ThreeDots" color="#1f2a38" height="12" width="26" />) 
+                          <Loader type="ThreeDots" color="#ffffff" height="12" width="26" />) 
                             : ('Login')}
                     </MDBBtn>
                   </div>
