@@ -9,10 +9,7 @@ class StylistList extends React.Component {
     dislike: false
   }
   
-  //remove testId and pass in actual id from api with no colon!!!
   pushToStylistPage = (id) => {
-    // let TestId = 2
-    // console.log(id)
       this.props.history.push(`/stylistpage/${id}`)
     }
 

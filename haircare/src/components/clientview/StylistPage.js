@@ -28,8 +28,8 @@ class StylistPage extends React.Component {
         ) : (
           <div>
             <LightBox />
-            <h1>
-              <span>{stylist.username}'s</span> P O R T F O L I O{" "}
+            <h1 className="portfolio-page-title">
+              <span className="portfolio-name">{stylist.username}'s</span> P O R T F O L I O{" "}
             </h1>
 
             <div className="portfolio-container">
@@ -38,7 +38,8 @@ class StylistPage extends React.Component {
                 alt={stylist.username}
                 className="portfolio-img"
               />
-              <span> {stylist.skills} </span>
+              <p className="portfolio-skills title">I am best at: </p> <br />
+              <span className="portfolio-skills"> {stylist.skills} </span>
             </div>
 
             {stylist.posts.map(post => {

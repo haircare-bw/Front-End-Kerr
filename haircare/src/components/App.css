@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes|Kaushan+Script&display=swap');
+
 .App {
   text-align: center;
 }
@@ -23,12 +25,30 @@
   color: #61dafb;
 }
 
+.nav-bar {
+  display: flex;
+  background-color: #ffb900;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.haircare-header {
+  align-self: flex-start;
+  margin-right: 80px;
+  padding: 10px 0 0 10px;
+  font-family: 'Kaushan Script', cursive;
+  color: #ffffff;
+  font-weight: 600;
+}
+
 ul {
   display: flex;
-  justify-content: flex-end;
+  align-self: flex-end;
+  margin-left: 30px;
   margin: 0 0 36px;
   padding: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
 }
 
 li {
@@ -41,6 +61,10 @@ a {
   text-decoration: none;
   padding: 6px;
   color: #333652;
+}
+
+#logout-btn {
+  margin-left: 500px;
 }
 
 .home-wrapper {
