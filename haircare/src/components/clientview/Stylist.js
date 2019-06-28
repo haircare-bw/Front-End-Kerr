@@ -12,6 +12,7 @@ class Stylist extends React.Component {
   }
 
   render() {
+
     return(
       <div>
         
@@ -20,7 +21,7 @@ class Stylist extends React.Component {
             <Loader type="Puff" color="#ffb900" height="60" width="60" />
         )}
 
-        {this.props.stylists && (this.props.stylists.map(stylist => (
+        {this.props.stylists.users && (this.props.stylists.users.map(stylist => (
             <StylistList stylist={stylist} key={stylist.id} />
         )))}
 

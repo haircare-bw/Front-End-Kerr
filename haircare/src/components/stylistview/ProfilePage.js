@@ -29,15 +29,11 @@ class ProfilePage extends React.Component {
   };
 
   pushToUpdateForm = post => {
+    console.log('PUSH BTN POST FNC', post)
     this.props.updateActivePost(post);
     this.props.history.push("/update-post");
   };
 
-  // setUpdateForm = (e, post) => {
-  //   e.preventDefault();
-  //   this.setState({ activePost: post });
-  //   this.props.history.push("/update-post");
-  // };
 
   deleteOldPost = id => {
     this.props.deletePost(id);
