@@ -1,13 +1,13 @@
 //delete btn here with the deletePost();
-import React from 'react';
-import Loader from 'react-loader-spinner';
-import { connect } from 'react-redux';
-import { updatePost } from '../../actions';
+import React from "react";
+import Loader from "react-loader-spinner";
+import { connect } from "react-redux";
+import { updatePost } from "../../actions";
 
 import {
-  MDBContainer, 
-  MDBRow, 
-  MDBCol, 
+  MDBContainer,
+  MDBRow,
+  MDBCol,
   MDBInput,
   MDBBtn,
   MDBCard,
@@ -15,9 +15,14 @@ import {
 } from "mdbreact";
 
 class UpdateForm extends React.Component {
-  state ={
-    profiles: this.props.profiles
-  }
+  state = {
+    post: {
+      stylists_id: this.props.activePost.stylists_id,
+      title: this.props.activePost.title,
+      posts_image: this.props.activePost.posts_image,
+      description: this.props.activePost.description
+    }
+  };
 
   handleChange = e => {
     e.persist();
@@ -26,12 +31,13 @@ class UpdateForm extends React.Component {
         ...prevState.profiles,
         [e.target.name]: e.target.value
       }
-    }))
-  }
+    }));
+  };
 
   render() {
-    console.log('PROPS IN UPDATE FORM: ', this.props.activePost)
-    return(
+    console.log("PROPS IN UPDATE FORM: ", this.props.activePost);
+    console.log("UPDATE FORM STATE", this.state.post);
+    return (
       <MDBContainer>
         <MDBRow>
           <MDBCol md="6">
@@ -90,7 +96,7 @@ class UpdateForm extends React.Component {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
-    )
+    );
   }
 }
 
@@ -101,6 +107,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps, 
+  mapStateToProps,
   { updatePost }
-  )(UpdateForm);
+)(UpdateForm);

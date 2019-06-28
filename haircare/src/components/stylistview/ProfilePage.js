@@ -4,7 +4,12 @@ import axios from "axios";
 import Loader from "react-loader-spinner";
 import { withRouter } from "react-router-dom";
 import { MDBBtn } from "mdbreact";
-import { getStylistId, addPost, deletePost, updateActivePost } from "../../actions";
+import {
+  getStylistId,
+  addPost,
+  deletePost,
+  updateActivePost
+} from "../../actions";
 // import LightBox from '../clientview/LightBox';
 import "../clientview/stylist.css";
 
@@ -24,9 +29,9 @@ class ProfilePage extends React.Component {
     this.props.history.push("/addnewpost");
   };
 
-  pushToUpdateForm = (post) => {
-    this.props.updateActivePost(post)
-    this.props.history.push("/update-form")
+  pushToUpdateForm = post => {
+    this.props.updateActivePost(post);
+    this.props.history.push("/update-post");
   };
 
   // setUpdateForm = (e, post) => {
@@ -35,14 +40,8 @@ class ProfilePage extends React.Component {
   //   this.props.history.push("/update-post");
   // };
 
-
-
-  deleteOldPost = (id) => {
-    this.props.deletePost(id)
-  }
-
-  pushToUpdateForm = () => {
-    this.props.history.push("/update-post");
+  deleteOldPost = id => {
+    this.props.deletePost(id);
   };
 
   render() {
@@ -77,8 +76,20 @@ class ProfilePage extends React.Component {
                   <h2>{post.title}</h2>
                   <img src={post.posts_image} />
                   <p>{post.description}</p>
-                  <MDBBtn onClick={() => {this.pushToUpdateForm(post)}}>Update</MDBBtn>
-                  <MDBBtn onClick={() => {this.deleteOldPost(post.id)}}>Delete</MDBBtn>
+                  <MDBBtn
+                    onClick={() => {
+                      this.pushToUpdateForm(post);
+                    }}
+                  >
+                    Update
+                  </MDBBtn>
+                  <MDBBtn
+                    onClick={() => {
+                      this.deleteOldPost(post.id);
+                    }}
+                  >
+                    Delete
+                  </MDBBtn>
                 </div>
               );
             })}
